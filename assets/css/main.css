@@ -75,8 +75,13 @@ body .sidebar {
   z-index: 100;
 }
 
-/* تنظیم کانتینر اصلی و صفحات پست */
-.content-box, .post-content, .wrap-content, main {
+/* تنظیم فاصله کل صفحه (هم صفحه اصلی و هم داخل پست‌ها) از سایدبار */
+.content-box, 
+.post-content, 
+.page-content, 
+.post, 
+main, 
+article {
   padding-right: 280px !important;
   padding-left: 40px !important;
   direction: rtl !important;
@@ -166,8 +171,8 @@ footer .copyright {
   margin: 0;
 }
 
-/* Post Cards (صفحه اصلی) */
-.post {
+/* کارت‌های پست در صفحه اصلی */
+.content-box .post {
   width: 100%;
   max-width: 100%;
   margin-bottom: 1.5rem;
@@ -180,37 +185,38 @@ footer .copyright {
   overflow: hidden;
   transition: all .3s ease;
   box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
+  padding: 0 !important; /* لغو پدینگ عمومی برای کارت‌ها */
 }
 
-.post:hover {
+.content-box .post:hover {
   transform: translate(0px, -2px);
   box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
 }
 
-.post .post-thumbnail {
+.content-box .post .post-thumbnail {
   width: 30%;
   min-height: 11rem;
   background-size: cover;
   background-position: 50% 50%;
 }
 
-.post .post-content {
+.content-box .post .post-content {
   padding: 1.5rem !important;
   width: 70%;
   text-align: right !important;
 }
 
-.post .post-content .post-title {
+.content-box .post .post-content .post-title {
   margin: 0 0 10px;
   font-size: 24px;
 }
 
-.post .post-content .post-title a {
+.content-box .post .post-content .post-title a {
   text-decoration: none;
   color: #263959;
 }
 
-/* اصلاح لیست‌ها و بولت‌ها درون پست‌ها */
+/* اصلاح چیدمان لیست‌ها و دکمه‌های اجتماعی داخل پست */
 ul, ol {
   padding-right: 25px !important;
   padding-left: 0 !important;
@@ -222,11 +228,18 @@ li {
   margin-bottom: 5px;
 }
 
-/* فوتر و دکمه‌های اشتراک‌گذاری پست */
-.page-footer, .post-footer {
+.post-footer, .share, .page-share {
+  margin-top: 30px !important;
+  display: block !important;
+  clear: both !important;
   direction: rtl !important;
   text-align: right !important;
-  margin-top: 20px;
+}
+
+.post-footer a, .share a, .page-share a {
+  margin-left: 15px !important;
+  margin-right: 0 !important;
+  display: inline-block !important;
 }
 
 /* Mobile Responsive */
@@ -239,16 +252,22 @@ li {
     border-bottom: 1px solid #eef2f8 !important;
   }
   
-  .content-box, .post-content, .wrap-content, main {
+  .content-box, 
+  .post-content, 
+  .page-content, 
+  .post, 
+  main, 
+  article {
     padding-right: 15px !important;
     padding-left: 15px !important;
   }
   
-  .post {
+  .content-box .post {
     flex-direction: column;
   }
   
-  .post .post-thumbnail, .post .post-content {
+  .content-box .post .post-thumbnail, 
+  .content-box .post .post-content {
     width: 100% !important;
   }
 }
