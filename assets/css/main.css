@@ -51,9 +51,6 @@ body {
   color: #515151;
 }
 
-
-/* Force Persian font everywhere */
-
 h1,
 h2,
 h3,
@@ -195,6 +192,7 @@ body .sidebar {
 
 /* =========================================================
    MAIN PAGE AREA
+   صفحه اصلی و ساختار کلی
    ========================================================= */
 
 .content-box,
@@ -215,15 +213,45 @@ main {
   box-sizing: border-box;
 }
 
-
-/* Main content vertical spacing */
-
 .content-box {
   padding-top: 20px;
   padding-bottom: 40px;
 
   display: flex;
   flex-direction: column;
+}
+
+
+/* =========================================================
+   مهم:
+   اصلاح ساختار صفحه POST
+   ========================================================= */
+
+/*
+   article-page داخل content-box قرار دارد.
+
+   قبلاً article-page دوباره:
+   width: calc(100% - 260px)
+   margin-right: 260px
+
+   می‌گرفت و باعث می‌شد صفحه مقاله
+   بیش از حد باریک شود.
+
+   این قوانین فقط برای article-page داخل content-box هستند.
+*/
+
+.content-box > .article-page {
+  width: 100% !important;
+
+  max-width: none !important;
+
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+
+  box-sizing: border-box;
 }
 
 
@@ -295,7 +323,9 @@ main {
 }
 
 
-/* Contact */
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
 .contact .contact-title {
   position: relative;
@@ -345,6 +375,7 @@ footer .copyright {
 
 /* =========================================================
    HOMEPAGE POST CARDS
+   صفحه اول
    ========================================================= */
 
 .content-box > .post {
@@ -354,6 +385,7 @@ footer .copyright {
   margin-bottom: 1.5rem;
 
   display: flex;
+
   flex-direction: row;
 
   align-items: stretch;
@@ -383,8 +415,7 @@ footer .copyright {
 
 
 /* =========================================================
-   THUMBNAIL
-   16:9 — YouTube Thumbnail Style
+   HOMEPAGE THUMBNAIL
    ========================================================= */
 
 .content-box > .post .post-thumbnail {
@@ -399,13 +430,15 @@ footer .copyright {
   flex-shrink: 0;
 
   background-size: cover;
+
   background-position: center center;
+
   background-repeat: no-repeat;
 }
 
 
 /* =========================================================
-   CARD TEXT
+   HOMEPAGE CARD TEXT
    ========================================================= */
 
 .content-box > .post .post-content {
@@ -415,9 +448,6 @@ footer .copyright {
 
   text-align: right !important;
 }
-
-
-/* Card title */
 
 .content-box > .post .post-content .post-title {
   margin: 0 0 10px;
@@ -436,77 +466,97 @@ footer .copyright {
 
 /* =========================================================
    ARTICLE PAGE
+   صفحه داخلی پست
    ========================================================= */
 
-/*
-   مهم:
-   این قسمت فقط برای صفحه خود مقاله است
-   و با post-content کارت‌های صفحه اصلی قاطی نمی‌شود.
-*/
-
 .article-page {
+  width: 100% !important;
+
+  max-width: none !important;
+
   padding-top: 30px !important;
+
   padding-bottom: 60px !important;
 }
 
 
-/* عنوان مقاله */
+/* =========================================================
+   ARTICLE INNER CONTAINER
+   ========================================================= */
 
-.article-page .post-title {
-  width: 100%;
+/*
+   این قسمت مهم‌ترین تغییر است.
 
-  max-width: 850px;
+   متن مقاله روی دسکتاپ حدود 920px عرض دارد،
+   ولی کل صفحه از فضای موجود استفاده می‌کند.
+*/
 
-  margin-right: auto;
-  margin-left: auto;
+.article-page .page-content {
+  width: 100% !important;
 
-  margin-top: 0;
-  margin-bottom: 25px;
+  max-width: 1100px !important;
 
-  font-size: 42px;
+  margin-right: auto !important;
+  margin-left: auto !important;
 
-  line-height: 1.65;
+  padding: 0 !important;
 
-  font-weight: 700;
+  direction: rtl !important;
+  text-align: right !important;
 
-  color: #222;
-
-  text-align: right;
+  box-sizing: border-box;
 }
 
 
-/* تاریخ مقاله */
+/* =========================================================
+   COVER IMAGE
+   ========================================================= */
 
-.article-page .post-meta,
-.article-page .post-date {
-  max-width: 850px;
+.article-page .page-cover-image {
+  width: 100%;
 
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto 35px;
+}
 
-  font-size: 15px;
+.article-page .page-cover-image figure {
+  width: 100%;
 
-  color: #888;
+  margin: 0;
+}
+
+.article-page .page-cover-image img {
+  display: block;
+
+  width: 100% !important;
+
+  max-width: 100% !important;
+
+  height: auto;
+
+  border-radius: 8px;
+}
+
+.article-page .page-cover-image figcaption {
+  margin-top: 8px;
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 14px;
 
   line-height: 1.8;
 }
 
 
 /* =========================================================
-   ARTICLE BODY
+   ARTICLE WRAPPER
    ========================================================= */
 
-/*
-   عرض متن را عمداً محدود می‌کنیم.
-   برای خوانایی متن فارسی، 720 تا 800px مناسب است.
-*/
-
-.article-page .post-content,
-.article-page .wrap-content,
-.article-page article {
+.article-page .wrap-content {
   width: 100% !important;
 
-  max-width: 760px !important;
+  max-width: 920px !important;
 
   margin-right: auto !important;
   margin-left: auto !important;
@@ -522,14 +572,67 @@ footer .copyright {
   line-height: 2.25 !important;
 
   color: #3f3f3f;
+
+  box-sizing: border-box;
 }
 
 
-/* Paragraph */
+/* =========================================================
+   ARTICLE HEADER
+   ========================================================= */
 
-.article-page .post-content p,
-.article-page .wrap-content p,
-.article-page article p {
+.article-page .header-page {
+  width: 100%;
+
+  max-width: 920px;
+
+  margin: 0 auto 30px;
+
+  border-bottom: 1px solid #eef2f8;
+
+  padding-bottom: 18px;
+}
+
+.article-page .page-title {
+  width: 100%;
+
+  margin: 0 0 10px;
+
+  font-size: 38px;
+
+  font-weight: 700;
+
+  line-height: 1.7;
+
+  color: #222;
+
+  text-align: right;
+}
+
+.article-page .page-date {
+  color: #888;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   ARTICLE TEXT
+   ========================================================= */
+
+.article-page .post-markdown-body {
+  width: 100%;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
+  color: #3f3f3f;
+}
+
+.article-page .post-markdown-body p {
   margin-top: 0;
 
   margin-bottom: 30px;
@@ -546,9 +649,7 @@ footer .copyright {
    ARTICLE HEADINGS
    ========================================================= */
 
-.article-page .post-content h2,
-.article-page .wrap-content h2,
-.article-page article h2 {
+.article-page .post-markdown-body h2 {
   margin-top: 60px;
 
   margin-bottom: 25px;
@@ -562,9 +663,7 @@ footer .copyright {
   color: #222;
 }
 
-.article-page .post-content h3,
-.article-page .wrap-content h3,
-.article-page article h3 {
+.article-page .post-markdown-body h3 {
   margin-top: 45px;
 
   margin-bottom: 20px;
@@ -578,9 +677,7 @@ footer .copyright {
   color: #222;
 }
 
-.article-page .post-content h4,
-.article-page .wrap-content h4,
-.article-page article h4 {
+.article-page .post-markdown-body h4 {
   margin-top: 35px;
 
   margin-bottom: 15px;
@@ -588,6 +685,10 @@ footer .copyright {
   font-size: 21px !important;
 
   line-height: 1.8 !important;
+
+  font-weight: 700;
+
+  color: #222;
 }
 
 
@@ -595,12 +696,8 @@ footer .copyright {
    ARTICLE LISTS
    ========================================================= */
 
-.article-page .post-content ul,
-.article-page .post-content ol,
-.article-page .wrap-content ul,
-.article-page .wrap-content ol,
-.article-page article ul,
-.article-page article ol {
+.article-page .post-markdown-body ul,
+.article-page .post-markdown-body ol {
   padding-right: 30px !important;
 
   padding-left: 0 !important;
@@ -613,12 +710,10 @@ footer .copyright {
 
   line-height: 2.25 !important;
 
-  direction: rtl;
+  direction: rtl !important;
 }
 
-.article-page .post-content li,
-.article-page .wrap-content li,
-.article-page article li {
+.article-page .post-markdown-body li {
   margin-bottom: 10px;
 
   text-align: right !important;
@@ -629,9 +724,7 @@ footer .copyright {
    BLOCKQUOTE
    ========================================================= */
 
-.article-page .post-content blockquote,
-.article-page .wrap-content blockquote,
-.article-page article blockquote {
+.article-page .post-markdown-body blockquote {
   margin: 40px 0;
 
   padding: 15px 25px;
@@ -642,9 +735,9 @@ footer .copyright {
 
   color: #555;
 
-  font-size: 19px;
+  font-size: 19px !important;
 
-  line-height: 2.2;
+  line-height: 2.2 !important;
 
   background: #f5f5f5;
 }
@@ -654,9 +747,7 @@ footer .copyright {
    ARTICLE LINKS
    ========================================================= */
 
-.article-page .post-content a,
-.article-page .wrap-content a,
-.article-page article a {
+.article-page .post-markdown-body a {
   color: inherit;
 
   text-decoration: underline;
@@ -671,9 +762,7 @@ footer .copyright {
    ARTICLE IMAGES
    ========================================================= */
 
-.article-page .post-content img,
-.article-page .wrap-content img,
-.article-page article img {
+.article-page .post-markdown-body img {
   display: block;
 
   width: auto !important;
@@ -687,16 +776,11 @@ footer .copyright {
   border-radius: 8px;
 }
 
-
-/* =========================================================
-   ARTICLE FIGURE
-   ========================================================= */
-
-.article-page figure {
+.article-page .post-markdown-body figure {
   margin: 40px 0;
 }
 
-.article-page figcaption {
+.article-page .post-markdown-body figcaption {
   margin-top: -25px;
 
   margin-bottom: 35px;
@@ -712,15 +796,72 @@ footer .copyright {
 
 
 /* =========================================================
-   VIDEO / IFRAME / PODCAST
+   VIDEO
    ========================================================= */
 
-.article-page .wrap-content iframe,
-.article-page .wrap-content .video-container,
-.article-page .wrap-content .podcast-container,
-.article-page .post-content iframe,
-.article-page .post-content .video-container,
-.article-page .post-content .podcast-container {
+.video-container {
+  position: relative;
+
+  width: 100%;
+
+  height: 0;
+
+  padding-bottom: 56.25%;
+
+  overflow: hidden;
+
+  max-width: 100%;
+
+  background: #000;
+
+  border-radius: 8px;
+
+  margin: 35px auto;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   PODCAST
+   ========================================================= */
+
+.podcast-container {
+  width: 100%;
+
+  margin: 35px auto;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  background: #fdfdfd;
+}
+
+.podcast-container iframe {
+  width: 100%;
+
+  border: none;
+}
+
+
+/* =========================================================
+   ARTICLE IFRAME
+   ========================================================= */
+
+.article-page .post-markdown-body iframe {
   display: block;
 
   width: 100% !important;
@@ -734,10 +875,10 @@ footer .copyright {
 
 
 /* =========================================================
-   ARTICLE SEPARATOR
+   HORIZONTAL LINE
    ========================================================= */
 
-.article-page hr {
+.article-page .post-markdown-body hr {
   margin: 45px 0;
 
   border: 0;
@@ -747,28 +888,97 @@ footer .copyright {
 
 
 /* =========================================================
-   SHARE / FOOTER
+   ARTICLE FOOTER
    ========================================================= */
 
-.page-footer,
-.page-share {
-  max-width: 760px;
+.article-page .page-footer {
+  width: 100%;
 
-  margin: 40px auto 0 !important;
+  max-width: 920px;
+
+  margin: 50px auto 0 !important;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #eef2f8;
 
   display: flex !important;
 
-  gap: 15px !important;
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 15px;
 
   direction: rtl !important;
 
   text-align: right !important;
 }
 
-.page-share a {
-  margin-left: 15px !important;
+
+/* =========================================================
+   SHARE
+   ========================================================= */
+
+.article-page .page-share {
+  display: flex !important;
+
+  align-items: center;
+
+  gap: 10px;
+
+  direction: rtl !important;
+}
+
+.article-page .page-share a {
+  color: #555;
+
+  font-size: 18px;
+
+  text-decoration: none;
+
+  margin-left: 0 !important;
 
   margin-right: 0 !important;
+
+  transition: color 0.2s;
+}
+
+.article-page .page-share a:hover {
+  color: #263959;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.article-page .page-tag {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+.article-page .page-tag .tag {
+  display: inline-block;
+
+  background: #f0f4f8;
+
+  padding: 4px 10px;
+
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  color: #555;
+
+  font-size: 13px;
+
+  line-height: 1.8;
 }
 
 
@@ -859,7 +1069,7 @@ footer .copyright {
 
 @media only screen and (max-width: 768px) {
 
-  /* Sidebar */
+  /* SIDEBAR */
 
   body .sidebar {
     position: relative !important;
@@ -869,7 +1079,9 @@ footer .copyright {
     height: auto !important;
 
     top: auto;
+
     right: auto;
+
     bottom: auto;
 
     border-left: none !important;
@@ -878,7 +1090,7 @@ footer .copyright {
   }
 
 
-  /* Main */
+  /* MAIN */
 
   .content-box,
   .article-page,
@@ -894,7 +1106,23 @@ footer .copyright {
   }
 
 
-  /* Homepage cards */
+  /* IMPORTANT:
+     Article must not receive the desktop
+     260px sidebar margin on mobile.
+  */
+
+  .content-box > .article-page {
+    width: 100% !important;
+
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+
+  /* HOMEPAGE CARDS */
 
   .content-box > .post {
     flex-direction: column;
@@ -905,9 +1133,6 @@ footer .copyright {
     width: 100% !important;
   }
 
-
-  /* Mobile Thumbnail — 16:9 */
-
   .content-box > .post .post-thumbnail {
     aspect-ratio: 16 / 9;
 
@@ -916,30 +1141,59 @@ footer .copyright {
     width: 100% !important;
 
     background-size: cover;
+
     background-position: center center;
+
     background-repeat: no-repeat;
   }
 
 
-  /* Article title */
+  /* ARTICLE */
 
-  .article-page .post-title {
-    max-width: 100%;
+  .article-page {
+    width: 100% !important;
 
-    font-size: 30px;
+    max-width: 100% !important;
 
-    line-height: 1.7;
+    padding-top: 20px !important;
 
-    margin-bottom: 20px;
+    padding-bottom: 40px !important;
+  }
+
+  .article-page .page-content {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    margin: 0 auto;
+
+    padding: 0 !important;
   }
 
 
-  /* Article body */
+  /* COVER */
 
-  .article-page .post-content,
-  .article-page .wrap-content,
-  .article-page article {
+  .article-page .page-cover-image {
+    width: 100%;
+
+    margin-bottom: 25px;
+  }
+
+  .article-page .page-cover-image img {
+    width: 100% !important;
+
+    border-radius: 6px;
+  }
+
+
+  /* ARTICLE TEXT */
+
+  .article-page .wrap-content {
+    width: 100% !important;
+
     max-width: 100% !important;
+
+    padding: 0 !important;
 
     font-size: 18px !important;
 
@@ -947,9 +1201,40 @@ footer .copyright {
   }
 
 
-  .article-page .post-content p,
-  .article-page .wrap-content p,
-  .article-page article p {
+  /* HEADER */
+
+  .article-page .header-page {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 15px;
+  }
+
+  .article-page .page-title {
+    font-size: 30px !important;
+
+    line-height: 1.7 !important;
+
+    margin-bottom: 10px;
+  }
+
+  .article-page .page-date {
+    font-size: 13px;
+  }
+
+
+  /* BODY */
+
+  .article-page .post-markdown-body {
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+  }
+
+  .article-page .post-markdown-body p {
     font-size: 18px !important;
 
     line-height: 2.2 !important;
@@ -958,33 +1243,39 @@ footer .copyright {
   }
 
 
-  /* Mobile headings */
+  /* HEADINGS */
 
-  .article-page .post-content h2,
-  .article-page .wrap-content h2,
-  .article-page article h2 {
+  .article-page .post-markdown-body h2 {
     font-size: 26px !important;
 
+    line-height: 1.7 !important;
+
     margin-top: 45px;
+
+    margin-bottom: 20px;
   }
 
-  .article-page .post-content h3,
-  .article-page .wrap-content h3,
-  .article-page article h3 {
+  .article-page .post-markdown-body h3 {
     font-size: 22px !important;
 
+    line-height: 1.8 !important;
+
     margin-top: 35px;
+
+    margin-bottom: 18px;
+  }
+
+  .article-page .post-markdown-body h4 {
+    font-size: 20px !important;
+
+    margin-top: 30px;
   }
 
 
-  /* Mobile lists */
+  /* LISTS */
 
-  .article-page .post-content ul,
-  .article-page .post-content ol,
-  .article-page .wrap-content ul,
-  .article-page .wrap-content ol,
-  .article-page article ul,
-  .article-page article ol {
+  .article-page .post-markdown-body ul,
+  .article-page .post-markdown-body ol {
     font-size: 18px !important;
 
     line-height: 2.2 !important;
@@ -993,20 +1284,43 @@ footer .copyright {
   }
 
 
-  /* Mobile quote */
+  /* BLOCKQUOTE */
 
-  .article-page .post-content blockquote,
-  .article-page .wrap-content blockquote,
-  .article-page article blockquote {
-    font-size: 18px;
+  .article-page .post-markdown-body blockquote {
+    font-size: 18px !important;
 
-    line-height: 2.2;
+    line-height: 2.2 !important;
 
     padding: 12px 18px;
+
+    margin: 30px 0;
   }
 
 
-  /* Mobile footer */
+  /* FOOTER */
+
+  .article-page .page-footer {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-top: 40px !important;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .article-page .page-share {
+    width: 100%;
+  }
+
+  .article-page .page-tag {
+    width: 100%;
+  }
+
+
+  /* NEWSLETTER */
 
   .footer-subscription {
     padding: 0 10px;
@@ -1019,5 +1333,4 @@ footer .copyright {
   .footer-email {
     font-size: 13px;
   }
-
 }
