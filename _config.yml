@@ -3,10 +3,10 @@ name: 'نویز | NOYS'
 description: 'روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
-baseurl: '/mundana-theme-jekyll'
-disqus: 'demowebsite'
-email: 'wowthemesnet@gmail.com'
-mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+baseurl: ""
+disqus: ''
+email: 'younesshojaei@gmail.com'
+mailchimp-list: ''
 
 include: ["_pages"]
 permalink: /:title/
@@ -17,24 +17,16 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-seo-tag
-  
-authors:
-    sal:
-      name:           Sal
-      site:           https://www.wowthemes.net
-      avatar:         /assets/images/avatar1.jpg
-      bio:            "Hi, I am Sal, the author of Mundana, the theme you're currently previewing. I hope you like it!"
-      email:          wowthemesnet@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
 
-    jane:
-      name:           Jane
-      site:           https://www.wowthemes.net
-      avatar:         /assets/images/avatar2.jpg
-      bio:            "Blogger, fashionista, love to explore new ideas and write on my morning coffee!"
-      email:          fakemail@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
- 
+authors:
+    youness:
+      name:           یونس شجاعی
+      site:           https://younesshojaei-crypto.github.io
+      avatar:         /assets/images/avatar1.jpg
+      bio:            "روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه"
+      email:          younesshojaei@gmail.com
+      twitter:        https://twitter.com/younesshojaei
+
 # Defaults
 defaults:
 
@@ -43,7 +35,7 @@ defaults:
       path: "_posts"
     values:
       layout: post
-      author: sal
+      author: youness
       avatar: /assets/images/avatar1.jpg
       
   # all pages
@@ -58,8 +50,6 @@ highlighter: rouge
 
 # Paginate
 paginate: 10
-
-
 
 # Exclude metadata and development time dependencies (like Grunt plugins)
 exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]
