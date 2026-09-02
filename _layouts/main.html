@@ -31,6 +31,13 @@ layout: default
 
     <section class="contact">
 
+      <div class="contact-logo">
+        <img
+          src="{{ site.baseurl }}/assets/img/noys-logo.png"
+          alt="NOYS"
+        >
+      </div>
+
       <h3 class="contact-title">
         ارتباط با من
       </h3>
@@ -179,8 +186,11 @@ layout: default
 
   margin-bottom: 18px;
 
+  box-shadow: 0 0 0 rgba(31, 35, 46, 0);
+
   transition:
-    transform 0.25s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
     opacity 0.25s ease;
 }
 
@@ -188,7 +198,11 @@ layout: default
 /* Hover */
 
 .post-thumbnail:hover {
-  opacity: 0.92;
+  opacity: 0.96;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 16px 30px rgba(31, 35, 46, 0.18);
 }
 
 
