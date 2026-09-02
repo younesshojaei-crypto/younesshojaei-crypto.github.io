@@ -1451,39 +1451,31 @@ a.newer-posts:hover {
   }
 }
 
-/* Vazirmatn & RTL Support */
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
-
-body {
-  font-family: 'Vazirmatn', sans-serif !important;
-  direction: rtl;
-  text-align: right;
-}
-
-.sidebar {
-  right: 0 !important;
-  left: auto !important;
-}
-
-.content {
-  margin-right: 300px !important;
-  margin-left: 0 !important;
-}
-
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
-
-body {
-  font-family: 'Vazirmatn', sans-serif !important;
-  direction: rtl;
-  text-align: right;
-}
-
-.sidebar {
-  right: 0 !important;
-  left: auto !important;
-}
-
-.content {
-  margin-right: 300px !important;
-  margin-left: 0 !important;
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  .content-box {
+    padding: 10px;
+  }
+  .post {
+    width: 98%;
+    max-width: 100%;
+    margin: 2%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .post .post-thumbnail {
+    width: 100%;
+  }
+  .post .post-content {
+    width: 100%;
+  }
+  .post .post-content .post-title {
+    margin: 0 0 5px;
+  }
+  .post .post-content .post-title a {
+    font-size: 21px;
+  }
 }

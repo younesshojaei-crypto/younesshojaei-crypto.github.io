@@ -1,36 +1,19 @@
 ---
-layout: default
+layout: main
 ---
-
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post-teaser">
-    {% if post.thumbnail %}
-    <div class="post-img">
-      <a href="{{ post.url | relative_url }}">
-        <img src="{{ post.thumbnail | relative_url }}">
-      </a>
-    </div>
-    {% endif %}
-
-    <span>
-      <header>
-        <h1>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title }}
-          </a>
-        </h1>
-        <p class="meta">
-          {{ post.date | date: "%B %d, %Y" }}
-        </p>
-      </header>
-
-      <div class="excerpt">
-        {{ post.excerpt }}
-      </div>
-    </span>
+{% for post in paginator.posts %}
+<article class="post">
+  {% if post.img %}
+    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
+  {% else %}
+  {% endif %}
+  <div class="post-content">
+    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
+    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
+    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
+    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
   </div>
-  {% endfor %}
-</div>
+</article>
+{% endfor %}
 
 {% include pagination.html %}
