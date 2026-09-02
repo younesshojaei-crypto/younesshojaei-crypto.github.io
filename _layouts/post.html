@@ -1,47 +1,126 @@
 ---
 layout: main
 ---
-<article class="article-page" style="direction: rtl; text-align: right; padding-right: 280px; padding-left: 40px; padding-top: 30px;">
+<article class="article-page">
   <div class="page-content">
     {% if page.img %}
-    <div class="page-cover-image" style="margin-bottom: 20px;">
+    <div class="page-cover-image">
       <figure>
-        <img class="page-image" src="{{ page.img | prepend: '/assets/img/' | relative_url }}" alt="{{page.title}}" style="width: 100%; border-radius: 8px;">
+        <img class="page-image" src="{{ page.img | prepend: '/assets/img/' | relative_url }}" alt="{{ page.title }}">
         {% if page.fig-caption %}
-          <figcaption style="text-align: center; color: #777; font-size: 14px; margin-top: 5px;">{{page.fig-caption}}</figcaption>
+          <figcaption>{{ page.fig-caption }}</figcaption>
         {% endif %}
       </figure>
     </div>
     {% endif %}
     
     <div class="wrap-content">
-      <header class="header-page" style="margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
-        <h1 class="page-title" style="font-family: 'Vazirmatn', sans-serif !important; font-size: 28px; font-weight: 700; margin-bottom: 10px;">{{page.title}}</h1>
-        <div class="page-date" style="color: #888; font-size: 14px;"><span>{{page.date | date: '%Y, %b %d'}}</span></div>
+      <header class="header-page">
+        <h1 class="page-title">{{ page.title }}</h1>
+        <div class="page-date"><span>{{ page.date | date: '%Y/%m/%d' }}</span></div>
       </header>
       
-      <div class="post-markdown-body" style="font-family: 'Vazirmatn', sans-serif !important; font-size: 16px; line-height: 1.8; color: #333;">
+      <div class="post-markdown-body">
         {{ content }}
       </div>
 
-      <div class="page-footer" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; direction: rtl;">
-        <div class="page-share" style="display: flex; gap: 15px;">
-          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank" style="text-decoration: none; color: #1da1f2;">Twitter</a>
-          <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank" style="text-decoration: none; color: #4267b2;">Facebook</a>
+      <div class="page-footer">
+        <div class="page-share">
+          <span>اشتراک‌گذاری:</span>
+          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="توییتر" rel="nofollow" target="_blank"><i class="fa fa-twitter"></i></a>
+          <a href="https://telegram.me/share/url?url={{ site.url }}{{ site.baseurl }}{{ page.url }}&text={{ page.title }}" title="تلگرام" rel="nofollow" target="_blank"><i class="fa fa-paper-plane"></i></a>
         </div>
         <div class="page-tag">
           {% for tag in page.tags %}
-            <a href="{{site.baseurl}}/tags#{{tag}}" class="tag" style="margin-left: 5px; background: #f0f0f0; padding: 3px 8px; border-radius: 4px; text-decoration: none; color: #555;">&#35; {{ tag }}</a>
+            <a href="{{ site.baseurl }}/tags#{{ tag }}" class="tag">&#35; {{ tag }}</a>
           {% endfor %}
         </div>
       </div>
       {% include disqus.html %}
-    </div> <!-- End Wrap Content -->
-  </div> <!-- End Page Content -->
-</article> <!-- End Article Page -->
+    </div>
+  </div>
+</article>
 
 <style>
-  .post-markdown-body ul, .post-markdown-body ol {
+  .article-page {
+    max-width: 840px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .page-cover-image img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .page-cover-image figcaption {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .header-page {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eef2f8;
+    padding-bottom: 15px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+  }
+
+  .page-date {
+    color: #888;
+    font-size: 14px;
+  }
+
+  .post-markdown-body {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #333;
+  }
+
+  /* Responsive 16:9 YouTube Video Container */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 8px;
+    margin: 25px 0;
+  }
+  .video-container iframe,
+  .video-container object,
+  .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Podcast Player Container (Castbox / Spotify / etc.) */
+  .podcast-container {
+    width: 100%;
+    margin: 25px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fdfdfd;
+  }
+  .podcast-container iframe {
+    width: 100%;
+    border: none;
+  }
+
+  .post-markdown-body ul, 
+  .post-markdown-body ol {
     padding-right: 25px !important;
     padding-left: 0 !important;
     margin-bottom: 20px !important;
@@ -51,10 +130,38 @@ layout: main
     margin-bottom: 8px !important;
     text-align: right !important;
   }
-  @media only screen and (max-width: 768px) {
-    .article-page {
-      padding-right: 15px !important;
-      padding-left: 15px !important;
-    }
+
+  .page-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eef2f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .page-share {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .page-share a {
+    color: #555;
+    font-size: 18px;
+    transition: color 0.2s;
+  }
+  .page-share a:hover {
+    color: #263959;
+  }
+
+  .page-tag .tag {
+    background: #f0f4f8;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #555;
+    font-size: 13px;
   }
 </style>
