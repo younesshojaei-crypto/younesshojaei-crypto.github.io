@@ -1,21 +1,37 @@
-title: 'نویز | NOYS'
-description: 'روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه'
-url: "https://noysdc.ir"
-baseurl: ""
+title: Hello, world! I'm David Freeman
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+permalink: ':title/'
+baseurl: "/flexible-jekyll" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+site-twitter: #if your site has a twitter account, enter it here
 
-author:
-  name: 'یونس شجاعی'
-  bio: 'مستندساز و روایت‌گر پرونده‌های سایه'
-  avatar: 'https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no'
+# Author Settings
+author: David Freeman # add your name
+author-img: david-freeman.jpg # add your photo
+about-author: I am a web developer focusing on front-end development. Always hungry to keep learning. # add description
+social-twitter: # add your Twitter handle
+social-facebook: # add your Facebook handle
+social-github: artemsheludko # add your Github handle
+social-linkedin: # add your Linkedin handle
+social-email: # add your Email address
 
-social:
-  youtube: 'https://www.youtube.com/@NOYS-DC/videos'
-  castbox: 'https://castbox.fm/vh/7361321'
-  substack: 'https://noysdc.substack.com/?r=5jvyln&utm_campaign=pub-share-checklist'
-  instagram: 'https://instagram.com/noysdc'
+# Disqus
+discus-identifier: mr-brown # add your discus identifier
 
+# Tracker
+analytics: # Google Analytics
+
+# Build Settings
+markdown: kramdown
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
 
-permalink: /:title/
+paginate: 8
+paginate_path: "/page/:num"
+
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
