@@ -1,6 +1,7 @@
 title: NOYS
-description: > # این متن در متای گوگل و فید سایت قرار می‌گیرد
-  مستندهای تحلیلی و روایی درباره کسب‌وکارهای سایه و بازارهای سیاه.
+description: >
+  روایت و مستند درباره آدم‌ها، ماجراها و سازوکارهایی که معمولاً پشت صحنه می‌مانند.
+
 permalink: /:title/
 baseurl: ""
 url: "https://noysdc.ir"
@@ -8,13 +9,19 @@ site-twitter:
 
 # Author Settings
 author: NOYS
-author-img: david-freeman.jpg # نام فایل تصویر خودت را در پوشه assets/img جایگزین کن
-about-author: روایت‌گری تحلیلی، مستندسازی ۳ بعدی و بررسی کسب‌وکارهای سایه.
+author-img:
+about-author: روایت‌هایی درباره پرونده‌های واقعی، کسب‌وکارهای سایه، بازارهای سیاه و داستان‌هایی که ارزش دوباره شنیدن دارند.
+
 social-twitter:
 social-facebook:
 social-github:
 social-linkedin:
 social-email:
+
+# NOYS Social Media
+social-youtube: "https://www.youtube.com/@NOYS-DC"
+social-instagram: "https://instagram.com/noysdc"
+social-telegram:
 
 # Disqus
 discus-identifier:
@@ -24,6 +31,7 @@ analytics:
 
 # Build Settings
 markdown: kramdown
+
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
@@ -32,4 +40,8 @@ plugins:
 paginate: 8
 paginate_path: "/page/:num"
 
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+exclude:
+  - "node_modules"
+  - "gulpfile.js"
+  - "package.json"
+  - "yarn.lock"
