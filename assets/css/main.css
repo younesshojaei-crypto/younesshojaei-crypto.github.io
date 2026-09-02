@@ -1451,46 +1451,21 @@ a.newer-posts:hover {
   }
 }
 
-/* Extra Small Devices, Phones */
-@media only screen and (max-width: 480px) {
-  .content-box {
-    padding: 10px;
-  }
-  .post {
-    width: 98%;
-    max-width: 100%;
-    margin: 2%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .post .post-thumbnail {
-    width: 100%;
-  }
-  .post .post-content {
-    width: 100%;
-  }
-  .post .post-content .post-title {
-    margin: 0 0 5px;
-  }
-  .post .post-content .post-title a {
-    font-size: 21px;
-  }
-}
-
+/* Vazirmatn & RTL Support */
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 
-body, html, h1, h2, h3, h4, h5, h6, p, a, li, span, div, header, nav, footer {
-    font-family: 'Vazirmatn', sans-serif !important;
-    direction: rtl !important;
-    text-align: right !important;
+body {
+  font-family: 'Vazirmatn', sans-serif !important;
+  direction: rtl;
+  text-align: right;
 }
 
-/* اصلاح نمایش پلیر پادکست و یوتیوب */
-iframe {
-    max-width: 100%;
-    border-radius: 8px;
-    margin: 1.5rem 0;
+.sidebar {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.content {
+  margin-right: 300px !important;
+  margin-left: 0 !important;
 }
