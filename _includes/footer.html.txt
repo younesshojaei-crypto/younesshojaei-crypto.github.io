@@ -1,0 +1,16 @@
+<div class="footer-subscription" style="text-align: center; margin: 30px auto;">
+  <h3 style="margin-bottom: 15px;">عضویت در خبرنامه Substack</h3>
+  
+  <!-- آی‌فریم رسمی ساب‌استک -->
+  <iframe src="https://noysdc.substack.com/embed" width="100%" height="320" style="border: 1px solid #333; background: white; max-width: 480px; border-radius: 8px;" frameborder="0" scrolling="no"></iframe>
+
+  <!-- ایمیل ارتباطی -->
+  <div class="footer-email" style="margin-top: 20px; font-size: 0.95rem; color: #aaa;">
+    <span>ارتباط مستقیم از طریق ایمیل: </span>
+    <a href="mailto:noysdc.media@gmail.com" style="color: #fff; text-decoration: underline;">noysdc.media@gmail.com</a>
+  </div>
+</div>
+
+<div class="copyright" style="text-align: center; margin-top: 20px;">
+  NOYS 2026 ©
+</div>
