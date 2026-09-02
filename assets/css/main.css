@@ -382,22 +382,34 @@ footer .copyright {
 }
 
 
-/* Thumbnail */
+/* =========================================================
+   THUMBNAIL
+   16:9 — YouTube Thumbnail Style
+   ========================================================= */
 
 .content-box > .post .post-thumbnail {
-  width: 30%;
+  width: 40%;
 
-  min-height: 11rem;
+  aspect-ratio: 16 / 9;
+
+  min-height: 0;
+
+  display: block;
+
+  flex-shrink: 0;
 
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 
-/* Card text */
+/* =========================================================
+   CARD TEXT
+   ========================================================= */
 
 .content-box > .post .post-content {
-  width: 70%;
+  width: 60%;
 
   padding: 1.5rem !important;
 
@@ -893,8 +905,19 @@ footer .copyright {
     width: 100% !important;
   }
 
+
+  /* Mobile Thumbnail — 16:9 */
+
   .content-box > .post .post-thumbnail {
-    min-height: 220px;
+    aspect-ratio: 16 / 9;
+
+    min-height: 0;
+
+    width: 100% !important;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 
 
