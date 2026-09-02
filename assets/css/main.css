@@ -1,4 +1,14 @@
-/* Local Vazirmatn RD Font Definition */
+/* =========================================================
+   NOYS
+   Main Stylesheet
+   RTL / Persian / Vazirmatn
+   ========================================================= */
+
+
+/* =========================================================
+   FONT
+   ========================================================= */
+
 @font-face {
   font-family: 'Vazirmatn';
   src: url('../fonts/Vazirmatn-RD-Regular.woff2') format('woff2');
@@ -15,11 +25,21 @@
   font-display: swap;
 }
 
-/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/* =========================================================
+   RESET / NORMALIZE
+   ========================================================= */
+
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body {
@@ -31,87 +51,186 @@ body {
   color: #515151;
 }
 
-/* Global RTL & Font Force */
-*, *::after, *::before {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
 
-h1, h2, h3, h4, h5, h6, p, a, li, span, div {
+/* Force Persian font everywhere */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+span,
+div,
+article,
+section,
+header,
+footer,
+nav,
+button,
+input,
+optgroup,
+select,
+textarea {
   font-family: 'Vazirmatn', sans-serif !important;
 }
 
-article, aside, footer, header, nav, section { display: block; }
-h1 { font-size: 2em; margin: 0.67em 0; }
-figcaption, figure, main { display: block; }
-figure { margin: 1em 40px; }
-hr { box-sizing: content-box; height: 0; overflow: visible; }
-pre, code, kbd, samp { font-family: monospace, monospace; font-size: 1em; }
-a { background-color: transparent; }
-b, strong { font-weight: bolder; }
-small { font-size: 80%; }
-sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-sub { bottom: -0.25em; }
-sup { top: -0.5em; }
-img { border-style: none; max-width: 100%; vertical-align: middle; display: inline-block; }
-svg:not(:root) { overflow: hidden; }
-
-button, input, optgroup, select, textarea {
-  font-family: 'Vazirmatn', sans-serif !important;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
 }
-button, input { overflow: visible; }
-button, select { text-transform: none; }
-button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: button; }
 
-/* Layout & Sidebar Positioning for RTL */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+a {
+  background-color: transparent;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+   ========================================================= */
+
 .wrapper {
   max-width: 1250px;
   position: relative;
   margin: 0 auto;
 }
 
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
 body .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   position: fixed;
+
   top: 0;
-  right: 0 !important;
-  left: auto !important;
+  right: 0;
+  left: auto;
   bottom: 0;
+
   width: 260px;
   height: 100%;
+
   padding: 20px 15px;
+
   background-color: #ffffff;
-  border-left: 1px solid #eef2f8 !important;
-  border-right: none !important;
+
+  border-left: 1px solid #eef2f8;
+  border-right: none;
+
   z-index: 100;
 }
 
-/* کانتینرهای اصلی و لایه‌بندی صفحات */
-.content-box, 
-.article-page, 
-.page-content, 
+
+/* =========================================================
+   MAIN PAGE AREA
+   ========================================================= */
+
+.content-box,
+.article-page,
+.page-content,
 main {
-  padding-right: 290px !important;
-  padding-left: 40px !important;
   direction: rtl !important;
   text-align: right !important;
-  width: 100% !important;
-  max-width: 1150px !important;
+
+  width: calc(100% - 260px) !important;
+
+  margin-right: 260px !important;
+  margin-left: 0 !important;
+
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+
+  box-sizing: border-box;
 }
+
+
+/* Main content vertical spacing */
 
 .content-box {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+
   display: flex;
   flex-direction: column;
 }
 
-/* Sidebar Details */
+
+/* =========================================================
+   SIDEBAR CONTENT
+   ========================================================= */
+
 .about {
   margin: 0 0 40px;
   text-align: center;
@@ -120,188 +239,762 @@ main {
 .about .cover-author-image {
   width: 100px;
   height: 100px;
+
   margin: 0 auto 10px;
+
   border-radius: 100%;
   overflow: hidden;
+
   background-color: #333030;
 }
 
 .about img {
   width: 100%;
   height: 100%;
+
   border-radius: 50%;
+
   transition: transform 0.35s;
 }
 
 .about .author-name {
   margin: 0 0 10px;
+
   position: relative;
+
   padding-bottom: 15px;
+
   font-size: 16px;
+
   text-transform: uppercase;
+
   color: #333030;
+
   font-weight: 700;
 }
 
 .about .author-name::after {
   content: "";
+
   position: absolute;
+
   left: 50%;
+
   transform: translateX(-50%);
+
   bottom: 0;
+
   display: block;
+
   width: 7px;
   height: 7px;
+
   border-radius: 100%;
+
   background-color: #515151;
 }
 
+
+/* Contact */
+
 .contact .contact-title {
   position: relative;
+
   color: #333030;
+
   font-weight: 400;
+
   font-size: 12px;
+
   margin: 0 0 5px;
+
   text-transform: uppercase;
+
   text-align: center;
 }
 
 .contact ul {
   margin: 0;
   padding: 0;
+
   list-style: none;
+
   text-align: center;
 }
 
 .contact ul li {
   display: inline-block;
+
   margin-left: 10px;
   margin-right: 0;
 }
 
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 footer .copyright {
   font-size: 14px;
+
   text-align: center;
+
   margin: 0;
 }
 
-/* کارت‌های پست در صفحه اصلی (لیست پست‌ها) */
+
+/* =========================================================
+   HOMEPAGE POST CARDS
+   ========================================================= */
+
 .content-box > .post {
   width: 100%;
   max-width: 100%;
+
   margin-bottom: 1.5rem;
+
   display: flex;
   flex-direction: row;
+
   align-items: stretch;
+
   min-height: 11rem;
+
   border-radius: 10px;
+
   background-color: #fff;
+
   overflow: hidden;
+
   transition: all .3s ease;
-  box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
+
+  box-shadow:
+    0 1px 1px 0 rgba(31, 35, 46, 0.15);
+
   padding: 0 !important;
 }
 
 .content-box > .post:hover {
   transform: translate(0px, -2px);
-  box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+
+  box-shadow:
+    0 15px 45px -10px rgba(10, 16, 34, 0.2);
 }
+
+
+/* Thumbnail */
 
 .content-box > .post .post-thumbnail {
   width: 30%;
+
   min-height: 11rem;
+
   background-size: cover;
   background-position: 50% 50%;
 }
 
+
+/* Card text */
+
 .content-box > .post .post-content {
-  padding: 1.5rem !important;
   width: 70%;
+
+  padding: 1.5rem !important;
+
   text-align: right !important;
 }
 
+
+/* Card title */
+
 .content-box > .post .post-content .post-title {
   margin: 0 0 10px;
+
   font-size: 24px;
+
+  line-height: 1.7;
 }
 
 .content-box > .post .post-content .post-title a {
   text-decoration: none;
+
   color: #263959;
 }
 
-/* اصلاح محتوای متنی و عرض صفحات داخلی مقاله */
-.post-content,
-.wrap-content,
+
+/* =========================================================
+   ARTICLE PAGE
+   ========================================================= */
+
+/*
+   مهم:
+   این قسمت فقط برای صفحه خود مقاله است
+   و با post-content کارت‌های صفحه اصلی قاطی نمی‌شود.
+*/
+
+.article-page {
+  padding-top: 30px !important;
+  padding-bottom: 60px !important;
+}
+
+
+/* عنوان مقاله */
+
+.article-page .post-title {
+  width: 100%;
+
+  max-width: 850px;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  font-size: 42px;
+
+  line-height: 1.65;
+
+  font-weight: 700;
+
+  color: #222;
+
+  text-align: right;
+}
+
+
+/* تاریخ مقاله */
+
+.article-page .post-meta,
+.article-page .post-date {
+  max-width: 850px;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  font-size: 15px;
+
+  color: #888;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   ARTICLE BODY
+   ========================================================= */
+
+/*
+   عرض متن را عمداً محدود می‌کنیم.
+   برای خوانایی متن فارسی، 720 تا 800px مناسب است.
+*/
+
+.article-page .post-content,
+.article-page .wrap-content,
 .article-page article {
   width: 100% !important;
-  max-width: 850px !important;
+
+  max-width: 760px !important;
+
+  margin-right: auto !important;
+  margin-left: auto !important;
+
+  padding: 0 !important;
+
   direction: rtl !important;
+
   text-align: right !important;
-  line-height: 1.8;
-  font-size: 1.05rem;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
+  color: #3f3f3f;
 }
 
-.wrap-content ul, 
-.wrap-content ol {
-  padding-right: 25px !important;
+
+/* Paragraph */
+
+.article-page .post-content p,
+.article-page .wrap-content p,
+.article-page article p {
+  margin-top: 0;
+
+  margin-bottom: 30px;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   ARTICLE HEADINGS
+   ========================================================= */
+
+.article-page .post-content h2,
+.article-page .wrap-content h2,
+.article-page article h2 {
+  margin-top: 60px;
+
+  margin-bottom: 25px;
+
+  font-size: 30px !important;
+
+  line-height: 1.7 !important;
+
+  font-weight: 700;
+
+  color: #222;
+}
+
+.article-page .post-content h3,
+.article-page .wrap-content h3,
+.article-page article h3 {
+  margin-top: 45px;
+
+  margin-bottom: 20px;
+
+  font-size: 24px !important;
+
+  line-height: 1.8 !important;
+
+  font-weight: 700;
+
+  color: #222;
+}
+
+.article-page .post-content h4,
+.article-page .wrap-content h4,
+.article-page article h4 {
+  margin-top: 35px;
+
+  margin-bottom: 15px;
+
+  font-size: 21px !important;
+
+  line-height: 1.8 !important;
+}
+
+
+/* =========================================================
+   ARTICLE LISTS
+   ========================================================= */
+
+.article-page .post-content ul,
+.article-page .post-content ol,
+.article-page .wrap-content ul,
+.article-page .wrap-content ol,
+.article-page article ul,
+.article-page article ol {
+  padding-right: 30px !important;
+
   padding-left: 0 !important;
-  direction: rtl !important;
-  margin-bottom: 20px !important;
+
+  margin-top: 0;
+
+  margin-bottom: 30px;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
+  direction: rtl;
 }
 
-.wrap-content li {
+.article-page .post-content li,
+.article-page .wrap-content li,
+.article-page article li {
+  margin-bottom: 10px;
+
   text-align: right !important;
-  margin-bottom: 8px !important;
 }
 
-.wrap-content img,
-.wrap-content iframe,
-.wrap-content .video-container,
-.wrap-content .podcast-container {
+
+/* =========================================================
+   BLOCKQUOTE
+   ========================================================= */
+
+.article-page .post-content blockquote,
+.article-page .wrap-content blockquote,
+.article-page article blockquote {
+  margin: 40px 0;
+
+  padding: 15px 25px;
+
+  border-right: 3px solid #555;
+
+  border-left: none;
+
+  color: #555;
+
+  font-size: 19px;
+
+  line-height: 2.2;
+
+  background: #f5f5f5;
+}
+
+
+/* =========================================================
+   ARTICLE LINKS
+   ========================================================= */
+
+.article-page .post-content a,
+.article-page .wrap-content a,
+.article-page article a {
+  color: inherit;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 3px;
+}
+
+
+/* =========================================================
+   ARTICLE IMAGES
+   ========================================================= */
+
+.article-page .post-content img,
+.article-page .wrap-content img,
+.article-page article img {
+  display: block;
+
+  width: auto !important;
+
   max-width: 100% !important;
-  width: 100% !important;
+
+  height: auto;
+
+  margin: 40px auto;
+
   border-radius: 8px;
-  margin: 15px 0;
 }
 
-.page-footer, .page-share {
-  margin-top: 30px !important;
+
+/* =========================================================
+   ARTICLE FIGURE
+   ========================================================= */
+
+.article-page figure {
+  margin: 40px 0;
+}
+
+.article-page figcaption {
+  margin-top: -25px;
+
+  margin-bottom: 35px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: #888;
+}
+
+
+/* =========================================================
+   VIDEO / IFRAME / PODCAST
+   ========================================================= */
+
+.article-page .wrap-content iframe,
+.article-page .wrap-content .video-container,
+.article-page .wrap-content .podcast-container,
+.article-page .post-content iframe,
+.article-page .post-content .video-container,
+.article-page .post-content .podcast-container {
+  display: block;
+
+  width: 100% !important;
+
+  max-width: 100% !important;
+
+  margin: 35px auto;
+
+  border-radius: 8px;
+}
+
+
+/* =========================================================
+   ARTICLE SEPARATOR
+   ========================================================= */
+
+.article-page hr {
+  margin: 45px 0;
+
+  border: 0;
+
+  border-top: 1px solid #e5e5e5;
+}
+
+
+/* =========================================================
+   SHARE / FOOTER
+   ========================================================= */
+
+.page-footer,
+.page-share {
+  max-width: 760px;
+
+  margin: 40px auto 0 !important;
+
   display: flex !important;
+
   gap: 15px !important;
+
   direction: rtl !important;
+
   text-align: right !important;
 }
 
 .page-share a {
   margin-left: 15px !important;
+
   margin-right: 0 !important;
 }
 
-/* Mobile Responsive */
+
+/* =========================================================
+   NEWSLETTER / FOOTER SUBSCRIPTION
+   ========================================================= */
+
+.footer-subscription {
+  max-width: 600px;
+
+  margin: 50px auto 0;
+
+  text-align: center;
+
+  direction: rtl;
+}
+
+.footer-subscription h3 {
+  margin: 0 0 10px;
+
+  font-size: 21px;
+
+  line-height: 1.7;
+
+  font-weight: 700;
+}
+
+.footer-subscription .newsletter-description {
+  margin: 0 0 25px;
+
+  color: #888;
+
+  font-size: 15px;
+
+  line-height: 2;
+}
+
+.substack-wrapper {
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+}
+
+.substack-wrapper iframe {
+  display: block;
+
+  width: 100%;
+
+  max-width: 480px;
+
+  border: 1px solid #333;
+
+  background: #fff;
+
+  border-radius: 8px;
+}
+
+.footer-email {
+  margin-top: 22px;
+
+  font-size: 14px;
+
+  color: #888;
+
+  line-height: 2;
+}
+
+.footer-email a {
+  color: #333;
+
+  text-decoration: underline;
+
+  direction: ltr;
+
+  display: inline-block;
+}
+
+.footer-email a:hover {
+  opacity: .7;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media only screen and (max-width: 768px) {
+
+  /* Sidebar */
+
   body .sidebar {
     position: relative !important;
+
     width: 100% !important;
+
     height: auto !important;
+
+    top: auto;
+    right: auto;
+    bottom: auto;
+
     border-left: none !important;
+
     border-bottom: 1px solid #eef2f8 !important;
   }
-  
-  .content-box, 
-  .article-page, 
-  .page-content, 
+
+
+  /* Main */
+
+  .content-box,
+  .article-page,
+  .page-content,
   main {
-    padding-right: 15px !important;
-    padding-left: 15px !important;
+    width: 100% !important;
+
+    margin-right: 0 !important;
+
+    padding-right: 18px !important;
+
+    padding-left: 18px !important;
   }
-  
+
+
+  /* Homepage cards */
+
   .content-box > .post {
     flex-direction: column;
   }
-  
-  .content-box > .post .post-thumbnail, 
+
+  .content-box > .post .post-thumbnail,
   .content-box > .post .post-content {
     width: 100% !important;
   }
+
+  .content-box > .post .post-thumbnail {
+    min-height: 220px;
+  }
+
+
+  /* Article title */
+
+  .article-page .post-title {
+    max-width: 100%;
+
+    font-size: 30px;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+  }
+
+
+  /* Article body */
+
+  .article-page .post-content,
+  .article-page .wrap-content,
+  .article-page article {
+    max-width: 100% !important;
+
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+  }
+
+
+  .article-page .post-content p,
+  .article-page .wrap-content p,
+  .article-page article p {
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+
+    margin-bottom: 26px;
+  }
+
+
+  /* Mobile headings */
+
+  .article-page .post-content h2,
+  .article-page .wrap-content h2,
+  .article-page article h2 {
+    font-size: 26px !important;
+
+    margin-top: 45px;
+  }
+
+  .article-page .post-content h3,
+  .article-page .wrap-content h3,
+  .article-page article h3 {
+    font-size: 22px !important;
+
+    margin-top: 35px;
+  }
+
+
+  /* Mobile lists */
+
+  .article-page .post-content ul,
+  .article-page .post-content ol,
+  .article-page .wrap-content ul,
+  .article-page .wrap-content ol,
+  .article-page article ul,
+  .article-page article ol {
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+
+    padding-right: 25px !important;
+  }
+
+
+  /* Mobile quote */
+
+  .article-page .post-content blockquote,
+  .article-page .wrap-content blockquote,
+  .article-page article blockquote {
+    font-size: 18px;
+
+    line-height: 2.2;
+
+    padding: 12px 18px;
+  }
+
+
+  /* Mobile footer */
+
+  .footer-subscription {
+    padding: 0 10px;
+  }
+
+  .footer-subscription h3 {
+    font-size: 19px;
+  }
+
+  .footer-email {
+    font-size: 13px;
+  }
+
 }
