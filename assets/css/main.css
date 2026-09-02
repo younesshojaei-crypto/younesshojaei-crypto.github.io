@@ -57,7 +57,7 @@ button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: b
   position: relative;
 }
 
-.sidebar {
+body .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,23 +66,33 @@ button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: b
   right: 0 !important;
   left: auto !important;
   bottom: 0;
-  width: 240px;
+  width: 260px;
   height: 100%;
-  padding: 20px 10px;
+  padding: 20px 15px;
   background-color: #ffffff;
-  border-left: 1px solid #eef2f8;
+  border-left: 1px solid #eef2f8 !important;
+  border-right: none !important;
+  z-index: 100;
+}
+
+/* تنظیم کانتینر اصلی و صفحات پست */
+.content-box, .post-content, .wrap-content, main {
+  padding-right: 280px !important;
+  padding-left: 40px !important;
+  direction: rtl !important;
+  text-align: right !important;
 }
 
 .content-box {
-  padding: 20px;
-  padding-right: 260px !important;
-  padding-left: 20px !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: stretch;
 }
 
+/* Sidebar Details */
 .about {
   margin: 0 0 40px;
   text-align: center;
@@ -146,7 +156,8 @@ button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: b
 
 .contact ul li {
   display: inline-block;
-  margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 0;
 }
 
 footer .copyright {
@@ -155,7 +166,7 @@ footer .copyright {
   margin: 0;
 }
 
-/* Post Cards */
+/* Post Cards (صفحه اصلی) */
 .post {
   width: 100%;
   max-width: 100%;
@@ -184,9 +195,9 @@ footer .copyright {
 }
 
 .post .post-content {
-  padding: 1rem;
+  padding: 1.5rem !important;
   width: 70%;
-  text-align: right;
+  text-align: right !important;
 }
 
 .post .post-content .post-title {
@@ -199,21 +210,45 @@ footer .copyright {
   color: #263959;
 }
 
+/* اصلاح لیست‌ها و بولت‌ها درون پست‌ها */
+ul, ol {
+  padding-right: 25px !important;
+  padding-left: 0 !important;
+  direction: rtl !important;
+}
+
+li {
+  text-align: right !important;
+  margin-bottom: 5px;
+}
+
+/* فوتر و دکمه‌های اشتراک‌گذاری پست */
+.page-footer, .post-footer {
+  direction: rtl !important;
+  text-align: right !important;
+  margin-top: 20px;
+}
+
 /* Mobile Responsive */
 @media only screen and (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
+  body .sidebar {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    border-left: none !important;
+    border-bottom: 1px solid #eef2f8 !important;
   }
-  .content-box {
-    padding-right: 10px !important;
-    padding-left: 10px !important;
+  
+  .content-box, .post-content, .wrap-content, main {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
   }
+  
   .post {
     flex-direction: column;
   }
+  
   .post .post-thumbnail, .post .post-content {
-    width: 100%;
+    width: 100% !important;
   }
 }
