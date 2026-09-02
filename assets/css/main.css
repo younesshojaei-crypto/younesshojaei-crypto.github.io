@@ -70,6 +70,7 @@ button, [type="button"], [type="reset"], [type="submit"] { -webkit-appearance: b
 .wrapper {
   max-width: 1250px;
   position: relative;
+  margin: 0 auto;
 }
 
 body .sidebar {
@@ -90,15 +91,17 @@ body .sidebar {
   z-index: 100;
 }
 
-/* کانتینرهای اصلی و صفحات مقاله */
+/* کانتینرهای اصلی و لایه‌بندی صفحات */
 .content-box, 
 .article-page, 
 .page-content, 
 main {
-  padding-right: 280px !important;
+  padding-right: 290px !important;
   padding-left: 40px !important;
   direction: rtl !important;
   text-align: right !important;
+  width: 100% !important;
+  max-width: 1150px !important;
 }
 
 .content-box {
@@ -182,8 +185,8 @@ footer .copyright {
   margin: 0;
 }
 
-/* کارت‌های پست در صفحه اصلی */
-.content-box .post {
+/* کارت‌های پست در صفحه اصلی (لیست پست‌ها) */
+.content-box > .post {
   width: 100%;
   max-width: 100%;
   margin-bottom: 1.5rem;
@@ -199,38 +202,44 @@ footer .copyright {
   padding: 0 !important;
 }
 
-.content-box .post:hover {
+.content-box > .post:hover {
   transform: translate(0px, -2px);
   box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
 }
 
-.content-box .post .post-thumbnail {
+.content-box > .post .post-thumbnail {
   width: 30%;
   min-height: 11rem;
   background-size: cover;
   background-position: 50% 50%;
 }
 
-.content-box .post .post-content {
+.content-box > .post .post-content {
   padding: 1.5rem !important;
   width: 70%;
   text-align: right !important;
 }
 
-.content-box .post .post-content .post-title {
+.content-box > .post .post-content .post-title {
   margin: 0 0 10px;
   font-size: 24px;
 }
 
-.content-box .post .post-content .post-title a {
+.content-box > .post .post-content .post-title a {
   text-decoration: none;
   color: #263959;
 }
 
-/* اصلاح محتوای متنی و لیست‌ها داخل پست */
-.wrap-content {
+/* اصلاح محتوای متنی و عرض صفحات داخلی مقاله */
+.post-content,
+.wrap-content,
+.article-page article {
+  width: 100% !important;
+  max-width: 850px !important;
   direction: rtl !important;
   text-align: right !important;
+  line-height: 1.8;
+  font-size: 1.05rem;
 }
 
 .wrap-content ul, 
@@ -244,6 +253,16 @@ footer .copyright {
 .wrap-content li {
   text-align: right !important;
   margin-bottom: 8px !important;
+}
+
+.wrap-content img,
+.wrap-content iframe,
+.wrap-content .video-container,
+.wrap-content .podcast-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  border-radius: 8px;
+  margin: 15px 0;
 }
 
 .page-footer, .page-share {
@@ -277,12 +296,12 @@ footer .copyright {
     padding-left: 15px !important;
   }
   
-  .content-box .post {
+  .content-box > .post {
     flex-direction: column;
   }
   
-  .content-box .post .post-thumbnail, 
-  .content-box .post .post-content {
+  .content-box > .post .post-thumbnail, 
+  .content-box > .post .post-content {
     width: 100% !important;
   }
 }
