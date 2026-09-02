@@ -1,167 +1,634 @@
 ---
 layout: main
 ---
+
 <article class="article-page">
+
   <div class="page-content">
+
+
     {% if page.img %}
+
     <div class="page-cover-image">
+
       <figure>
-        <img class="page-image" src="{{ page.img | prepend: '/assets/img/' | relative_url }}" alt="{{ page.title }}">
+
+        <img
+          class="page-image"
+          src="{{ page.img | prepend: '/assets/img/' | relative_url }}"
+          alt="{{ page.title }}"
+        >
+
         {% if page.fig-caption %}
-          <figcaption>{{ page.fig-caption }}</figcaption>
+
+        <figcaption>
+          {{ page.fig-caption }}
+        </figcaption>
+
         {% endif %}
+
       </figure>
+
     </div>
+
     {% endif %}
-    
+
+
     <div class="wrap-content">
+
+
       <header class="header-page">
-        <h1 class="page-title">{{ page.title }}</h1>
-        <div class="page-date"><span>{{ page.date | date: '%Y/%m/%d' }}</span></div>
+
+        <h1 class="page-title">
+          {{ page.title }}
+        </h1>
+
+        <div class="page-date">
+          {{ page.date | date: '%Y/%m/%d' }}
+        </div>
+
       </header>
-      
+
+
       <div class="post-markdown-body">
+
         {{ content }}
+
       </div>
+
 
       <div class="page-footer">
+
+
         <div class="page-share">
-          <span>اشتراک‌گذاری:</span>
-          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="توییتر" rel="nofollow" target="_blank"><i class="fa fa-twitter"></i></a>
-          <a href="https://telegram.me/share/url?url={{ site.url }}{{ site.baseurl }}{{ page.url }}&text={{ page.title }}" title="تلگرام" rel="nofollow" target="_blank"><i class="fa fa-paper-plane"></i></a>
+
+          <span>
+            اشتراک‌گذاری:
+          </span>
+
+
+          <a
+            href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+            title="توییتر"
+            rel="nofollow"
+            target="_blank"
+          >
+            <i class="fa fa-twitter"></i>
+          </a>
+
+
+          <a
+            href="https://telegram.me/share/url?url={{ site.url }}{{ site.baseurl }}{{ page.url }}&text={{ page.title }}"
+            title="تلگرام"
+            rel="nofollow"
+            target="_blank"
+          >
+            <i class="fa fa-paper-plane"></i>
+          </a>
+
         </div>
+
+
         <div class="page-tag">
+
           {% for tag in page.tags %}
-            <a href="{{ site.baseurl }}/tags#{{ tag }}" class="tag">&#35; {{ tag }}</a>
+
+          <a
+            href="{{ site.baseurl }}/tags#{{ tag }}"
+            class="tag"
+          >
+            &#35; {{ tag }}
+          </a>
+
           {% endfor %}
+
         </div>
+
+
       </div>
+
+
       {% include disqus.html %}
+
     </div>
+
   </div>
+
 </article>
 
+
 <style>
+
+/* =========================================================
+   ARTICLE
+   ========================================================= */
+
+.article-page {
+
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   COVER IMAGE
+   ========================================================= */
+
+.page-cover-image {
+
+  width: 100%;
+
+  margin-bottom: 30px;
+
+}
+
+
+.page-cover-image figure {
+
+  margin: 0;
+
+}
+
+
+.page-cover-image img {
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 8px;
+
+}
+
+
+/* =========================================================
+   CAPTION
+   ========================================================= */
+
+.page-cover-image figcaption {
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  margin-top: 8px;
+
+}
+
+
+/* =========================================================
+   ARTICLE CONTENT
+   ========================================================= */
+
+.wrap-content {
+
+  width: 100%;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header-page {
+
+  margin-bottom: 30px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #eef2f8;
+
+}
+
+
+.page-title {
+
+  margin: 0 0 10px 0;
+
+  font-size: 30px;
+
+  line-height: 1.7;
+
+  font-weight: 700;
+
+  color: #222;
+
+}
+
+
+.page-date {
+
+  color: #888;
+
+  font-size: 13px;
+
+}
+
+
+/* =========================================================
+   ARTICLE TEXT
+   ========================================================= */
+
+.post-markdown-body {
+
+  font-size: 18px;
+
+  line-height: 2.05;
+
+  color: #333;
+
+  text-align: right;
+
+}
+
+
+/* =========================================================
+   ARTICLE HEADINGS
+   ========================================================= */
+
+.post-markdown-body h2 {
+
+  margin-top: 45px;
+
+  margin-bottom: 20px;
+
+  font-size: 25px;
+
+  line-height: 1.7;
+
+}
+
+
+.post-markdown-body h3 {
+
+  margin-top: 35px;
+
+  margin-bottom: 15px;
+
+  font-size: 21px;
+
+  line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   PARAGRAPHS
+   ========================================================= */
+
+.post-markdown-body p {
+
+  margin-top: 0;
+
+  margin-bottom: 25px;
+
+}
+
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+.post-markdown-body ul,
+.post-markdown-body ol {
+
+  padding-right: 28px !important;
+
+  padding-left: 0 !important;
+
+  margin-top: 15px !important;
+
+  margin-bottom: 25px !important;
+
+  direction: rtl !important;
+
+}
+
+
+.post-markdown-body li {
+
+  margin-bottom: 10px !important;
+
+  text-align: right !important;
+
+}
+
+
+/* =========================================================
+   IMAGES INSIDE ARTICLE
+   ========================================================= */
+
+.post-markdown-body img {
+
+  display: block;
+
+  max-width: 100%;
+
+  height: auto;
+
+  margin: 30px auto;
+
+  border-radius: 8px;
+
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.post-markdown-body a {
+
+  color: #263959;
+
+  text-decoration: underline;
+
+}
+
+
+/* =========================================================
+   BLOCKQUOTE
+   ========================================================= */
+
+.post-markdown-body blockquote {
+
+  margin: 30px 0;
+
+  padding: 15px 20px;
+
+  border-right: 4px solid #263959;
+
+  background: #f7f9fb;
+
+  color: #555;
+
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.video-container {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 0;
+
+  padding-bottom: 56.25%;
+
+  margin: 30px 0;
+
+  overflow: hidden;
+
+  background: #000;
+
+  border-radius: 8px;
+
+}
+
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+}
+
+
+/* =========================================================
+   PODCAST
+   ========================================================= */
+
+.podcast-container {
+
+  width: 100%;
+
+  margin: 30px 0;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  background: #fdfdfd;
+
+}
+
+
+.podcast-container iframe {
+
+  width: 100%;
+
+  border: none;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.page-footer {
+
+  margin-top: 50px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #eef2f8;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 15px;
+
+}
+
+
+/* =========================================================
+   SHARE
+   ========================================================= */
+
+.page-share {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+
+.page-share a {
+
+  color: #555;
+
+  font-size: 18px;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+
+}
+
+
+.page-share a:hover {
+
+  color: #263959;
+
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.page-tag {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+}
+
+
+.page-tag .tag {
+
+  display: inline-block;
+
+  background: #f0f4f8;
+
+  padding: 4px 10px;
+
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  color: #555;
+
+  font-size: 13px;
+
+}
+
+
+/* =========================================================
+   MOBILE ARTICLE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
   .article-page {
-    max-width: 840px;
-    margin: 0 auto;
-    width: 100%;
+
+    max-width: 100%;
+
   }
 
-  .page-cover-image img {
-    width: 100%;
-    border-radius: 8px;
+
+  .page-cover-image {
+
+    margin-bottom: 22px;
+
   }
 
-  .page-cover-image figcaption {
-    text-align: center;
-    color: #777;
-    font-size: 14px;
-    margin-top: 8px;
-  }
-
-  .header-page {
-    margin-bottom: 25px;
-    border-bottom: 1px solid #eef2f8;
-    padding-bottom: 15px;
-  }
 
   .page-title {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #222;
+
+    font-size: 25px;
+
+    line-height: 1.7;
+
   }
 
-  .page-date {
-    color: #888;
-    font-size: 14px;
-  }
 
   .post-markdown-body {
+
     font-size: 17px;
-    line-height: 1.9;
-    color: #333;
+
+    line-height: 2;
+
   }
 
-  /* Responsive 16:9 YouTube Video Container */
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-    border-radius: 8px;
-    margin: 25px 0;
-  }
-  .video-container iframe,
-  .video-container object,
-  .video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
+
+  .post-markdown-body h2 {
+
+    font-size: 22px;
+
   }
 
-  /* Podcast Player Container (Castbox / Spotify / etc.) */
-  .podcast-container {
-    width: 100%;
-    margin: 25px 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fdfdfd;
-  }
-  .podcast-container iframe {
-    width: 100%;
-    border: none;
+
+  .post-markdown-body h3 {
+
+    font-size: 19px;
+
   }
 
-  .post-markdown-body ul, 
-  .post-markdown-body ol {
-    padding-right: 25px !important;
-    padding-left: 0 !important;
-    margin-bottom: 20px !important;
-    direction: rtl !important;
-  }
-  .post-markdown-body li {
-    margin-bottom: 8px !important;
-    text-align: right !important;
-  }
 
   .page-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #eef2f8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
   }
 
-  .page-share {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .page-share a {
-    color: #555;
-    font-size: 18px;
-    transition: color 0.2s;
-  }
-  .page-share a:hover {
-    color: #263959;
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .page-title {
+
+    font-size: 23px;
+
   }
 
-  .page-tag .tag {
-    background: #f0f4f8;
-    padding: 4px 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #555;
-    font-size: 13px;
+
+  .post-markdown-body {
+
+    font-size: 16px;
+
+    line-height: 2;
+
   }
+
+
+  .page-cover-image img {
+
+    border-radius: 6px;
+
+  }
+
+}
+
 </style>

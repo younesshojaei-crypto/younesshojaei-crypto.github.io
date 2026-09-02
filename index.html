@@ -1,19 +1,143 @@
 ---
 layout: main
 ---
-{% for post in paginator.posts %}
-<article class="post">
-  {% if post.img %}
-    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
-  {% else %}
-  {% endif %}
-  <div class="post-content">
-    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
-    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
-    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
-  </div>
-</article>
-{% endfor %}
+
+<div class="posts-list">
+
+  {% for post in paginator.posts %}
+
+  <article class="post {% unless post.img %}post-text-only{% endunless %}">
+
+    {% if post.img %}
+
+      <a
+        class="post-thumbnail"
+        href="{{ post.url | prepend: site.baseurl }}"
+        style="background-image: url('{{ "/assets/img/" | prepend: site.baseurl | append: post.img }}');"
+        aria-label="{{ post.title }}"
+      ></a>
+
+    {% endif %}
+
+
+    <div class="post-content">
+
+      <h2 class="post-title">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+          {{ post.title }}
+        </a>
+      </h2>
+
+
+      {% if post.content %}
+
+      <p>
+        {{ post.content | strip_html | truncatewords: 25 }}
+      </p>
+
+      {% endif %}
+
+
+      <div class="post-meta">
+
+        <span class="post-date">
+          {{ post.date | date: '%Y/%m/%d' }}
+        </span>
+
+        <span class="post-meta-separator">
+          —
+        </span>
+
+        <span class="post-words">
+
+          {% capture words %}
+            {{ post.content | number_of_words }}
+          {% endcapture %}
+
+          {% unless words contains "-" %}
+
+            {{ words
+              | plus: 250
+              | divided_by: 250
+              | append: " دقیقه مطالعه"
+            }}
+
+          {% endunless %}
+
+        </span>
+
+      </div>
+
+    </div>
+
+  </article>
+
+  {% endfor %}
+
+</div>
+
 
 {% include pagination.html %}
+
+
+<style>
+
+/* =========================================================
+   NOYS - HOME POSTS
+   ========================================================= */
+
+.posts-list {
+  width: 100%;
+}
+
+
+/* =========================================================
+   TEXT ONLY POSTS
+   ========================================================= */
+
+.post-text-only {
+
+  padding: 25px 0;
+
+  border-bottom: 1px solid #eef2f8;
+
+}
+
+
+/* =========================================================
+   POST META
+   ========================================================= */
+
+.post-meta {
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  direction: rtl;
+
+}
+
+
+.post-meta-separator {
+  color: #aaa;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .post-text-only {
+    padding: 20px 0;
+  }
+
+}
+
+</style>
