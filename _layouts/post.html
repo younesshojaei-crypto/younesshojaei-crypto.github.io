@@ -1,528 +1,105 @@
 ```html
-<style>
-  /* =========================================================
-     NOYS — ARTICLE / POST PAGE
-     تنظیمات صفحه‌ای که بعد از کلیک روی یک پست باز می‌شود
-     ========================================================= */
+---
+layout: main
+---
 
-  .article-page {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding-top: 30px !important;
-    padding-bottom: 60px !important;
-  }
+<article class="article-page">
 
-  /* =========================================================
-     COVER IMAGE
-     ========================================================= */
+  <div class="page-content">
 
-  .page-cover-image {
-    width: 100%;
-    margin: 0 auto 35px;
-  }
+    {% if page.img %}
+    <div class="page-cover-image">
+      <figure>
+        <img
+          class="page-image"
+          src="{{ page.img | prepend: '/assets/img/' | relative_url }}"
+          alt="{{ page.title }}"
+        >
 
-  .page-cover-image figure {
-    margin: 0;
-    width: 100%;
-  }
+        {% if page.fig-caption %}
+        <figcaption>
+          {{ page.fig-caption }}
+        </figcaption>
+        {% endif %}
+      </figure>
+    </div>
+    {% endif %}
 
-  .page-cover-image img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
 
-  .page-cover-image figcaption {
-    text-align: center;
-    color: #777;
-    font-size: 14px;
-    line-height: 1.8;
-    margin-top: 8px;
-  }
+    <div class="wrap-content">
 
+      <header class="header-page">
 
-  /* =========================================================
-     ARTICLE CONTENT
-     عرض اصلی متن
-     ========================================================= */
+        <h1 class="page-title">
+          {{ page.title }}
+        </h1>
 
-  .article-page .wrap-content {
-    width: 100% !important;
-    max-width: 920px !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-    padding: 0 !important;
+        <div class="page-date">
+          <span>
+            {{ page.date | date: '%Y/%m/%d' }}
+          </span>
+        </div>
 
-    direction: rtl !important;
-    text-align: right !important;
+      </header>
 
-    color: #3f3f3f;
-    font-size: 19px !important;
-    line-height: 2.25 !important;
-  }
 
+      <div class="post-markdown-body">
+        {{ content }}
+      </div>
 
-  /* =========================================================
-     HEADER / TITLE
-     ========================================================= */
 
-  .header-page {
-    width: 100%;
-    max-width: 920px;
-    margin: 0 auto 30px;
-    border-bottom: 1px solid #eef2f8;
-    padding-bottom: 18px;
-  }
+      <div class="page-footer">
 
-  .page-title {
-    margin: 0 0 10px;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.7;
-    color: #222;
-  }
+        <div class="page-share">
 
-  .page-date {
-    color: #888;
-    font-size: 14px;
-    line-height: 1.8;
-  }
+          <span>
+            اشتراک‌گذاری:
+          </span>
 
+          <a
+            href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}"
+            title="توییتر"
+            rel="nofollow"
+            target="_blank"
+          >
+            <i class="fa fa-twitter"></i>
+          </a>
 
-  /* =========================================================
-     TEXT
-     ========================================================= */
+          <a
+            href="https://telegram.me/share/url?url={{ site.url }}{{ site.baseurl }}{{ page.url }}&text={{ page.title | url_encode }}"
+            title="تلگرام"
+            rel="nofollow"
+            target="_blank"
+          >
+            <i class="fa fa-paper-plane"></i>
+          </a>
 
-  .post-markdown-body {
-    width: 100%;
-    font-size: 19px !important;
-    line-height: 2.25 !important;
-    color: #3f3f3f;
-  }
+        </div>
 
-  .post-markdown-body p {
-    margin-top: 0;
-    margin-bottom: 30px;
-    font-size: 19px !important;
-    line-height: 2.25 !important;
-    font-weight: 400;
-  }
 
+        <div class="page-tag">
 
-  /* =========================================================
-     HEADINGS
-     ========================================================= */
+          {% for tag in page.tags %}
 
-  .post-markdown-body h2 {
-    margin-top: 60px;
-    margin-bottom: 25px;
+          <a
+            href="{{ site.baseurl }}/tags#{{ tag }}"
+            class="tag"
+          >
+            &#35; {{ tag }}
+          </a>
 
-    font-size: 30px !important;
-    line-height: 1.7 !important;
-    font-weight: 700;
+          {% endfor %}
 
-    color: #222;
-  }
+        </div>
 
-  .post-markdown-body h3 {
-    margin-top: 45px;
-    margin-bottom: 20px;
+      </div>
 
-    font-size: 24px !important;
-    line-height: 1.8 !important;
-    font-weight: 700;
 
-    color: #222;
-  }
+      {% include disqus.html %}
 
-  .post-markdown-body h4 {
-    margin-top: 35px;
-    margin-bottom: 15px;
+    </div>
 
-    font-size: 21px !important;
-    line-height: 1.8 !important;
-    font-weight: 700;
+  </div>
 
-    color: #222;
-  }
-
-
-  /* =========================================================
-     LISTS
-     ========================================================= */
-
-  .post-markdown-body ul,
-  .post-markdown-body ol {
-    padding-right: 30px !important;
-    padding-left: 0 !important;
-
-    margin-top: 0;
-    margin-bottom: 30px;
-
-    font-size: 19px !important;
-    line-height: 2.25 !important;
-
-    direction: rtl !important;
-  }
-
-  .post-markdown-body li {
-    margin-bottom: 10px;
-    text-align: right !important;
-  }
-
-
-  /* =========================================================
-     BLOCKQUOTE
-     ========================================================= */
-
-  .post-markdown-body blockquote {
-    margin: 40px 0;
-    padding: 15px 25px;
-
-    border-right: 3px solid #555;
-    border-left: none;
-
-    color: #555;
-
-    font-size: 19px !important;
-    line-height: 2.2 !important;
-
-    background: #f5f5f5;
-  }
-
-
-  /* =========================================================
-     LINKS
-     ========================================================= */
-
-  .post-markdown-body a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-  }
-
-
-  /* =========================================================
-     ARTICLE IMAGES
-     ========================================================= */
-
-  .post-markdown-body img {
-    display: block;
-
-    width: auto !important;
-    max-width: 100% !important;
-    height: auto;
-
-    margin: 40px auto;
-
-    border-radius: 8px;
-  }
-
-  .post-markdown-body figure {
-    margin: 40px 0;
-  }
-
-  .post-markdown-body figcaption {
-    margin-top: -25px;
-    margin-bottom: 35px;
-
-    text-align: center;
-
-    font-size: 14px;
-    line-height: 1.8;
-
-    color: #888;
-  }
-
-
-  /* =========================================================
-     VIDEO / PODCAST
-     ========================================================= */
-
-  .video-container {
-    position: relative;
-
-    width: 100%;
-    height: 0;
-
-    padding-bottom: 56.25%;
-
-    overflow: hidden;
-
-    max-width: 100%;
-
-    background: #000;
-
-    border-radius: 8px;
-
-    margin: 35px auto;
-  }
-
-  .video-container iframe,
-  .video-container object,
-  .video-container embed {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    border: 0;
-  }
-
-  .podcast-container {
-    width: 100%;
-    margin: 35px auto;
-
-    border-radius: 8px;
-    overflow: hidden;
-
-    background: #fdfdfd;
-  }
-
-  .podcast-container iframe {
-    width: 100%;
-    border: none;
-  }
-
-
-  /* =========================================================
-     IFRAMES
-     ========================================================= */
-
-  .post-markdown-body iframe {
-    display: block;
-
-    width: 100% !important;
-    max-width: 100% !important;
-
-    margin: 35px auto;
-
-    border-radius: 8px;
-  }
-
-
-  /* =========================================================
-     HORIZONTAL LINE
-     ========================================================= */
-
-  .post-markdown-body hr {
-    margin: 45px 0;
-
-    border: 0;
-    border-top: 1px solid #e5e5e5;
-  }
-
-
-  /* =========================================================
-     FOOTER / SHARE / TAGS
-     ========================================================= */
-
-  .page-footer {
-    width: 100%;
-    max-width: 920px;
-
-    margin: 50px auto 0 !important;
-
-    padding-top: 20px;
-
-    border-top: 1px solid #eef2f8;
-
-    display: flex !important;
-
-    justify-content: space-between;
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 15px;
-
-    direction: rtl !important;
-    text-align: right !important;
-  }
-
-  .page-share {
-    display: flex !important;
-    align-items: center;
-
-    gap: 10px;
-
-    direction: rtl !important;
-  }
-
-  .page-share a {
-    color: #555;
-
-    font-size: 18px;
-
-    text-decoration: none;
-
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-
-    transition: color 0.2s;
-  }
-
-  .page-share a:hover {
-    color: #263959;
-  }
-
-  .page-tag {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 6px;
-  }
-
-  .page-tag .tag {
-    display: inline-block;
-
-    background: #f0f4f8;
-
-    padding: 4px 10px;
-
-    border-radius: 4px;
-
-    text-decoration: none;
-
-    color: #555;
-
-    font-size: 13px;
-
-    line-height: 1.8;
-  }
-
-
-  /* =========================================================
-     MOBILE
-     ========================================================= */
-
-  @media only screen and (max-width: 768px) {
-
-    .article-page {
-      width: 100% !important;
-
-      padding-top: 20px !important;
-      padding-bottom: 40px !important;
-    }
-
-    .page-cover-image {
-      margin-bottom: 25px;
-    }
-
-    .page-cover-image img {
-      border-radius: 6px;
-    }
-
-    .article-page .wrap-content {
-      width: 100% !important;
-
-      max-width: 100% !important;
-
-      padding: 0 !important;
-
-      font-size: 18px !important;
-      line-height: 2.2 !important;
-    }
-
-    .header-page {
-      max-width: 100%;
-
-      margin-bottom: 25px;
-
-      padding-bottom: 15px;
-    }
-
-    .page-title {
-      font-size: 30px !important;
-
-      line-height: 1.7 !important;
-
-      margin-bottom: 10px;
-    }
-
-    .page-date {
-      font-size: 13px;
-    }
-
-    .post-markdown-body {
-      font-size: 18px !important;
-      line-height: 2.2 !important;
-    }
-
-    .post-markdown-body p {
-      font-size: 18px !important;
-      line-height: 2.2 !important;
-
-      margin-bottom: 26px;
-    }
-
-    .post-markdown-body h2 {
-      font-size: 26px !important;
-
-      line-height: 1.7 !important;
-
-      margin-top: 45px;
-      margin-bottom: 20px;
-    }
-
-    .post-markdown-body h3 {
-      font-size: 22px !important;
-
-      line-height: 1.8 !important;
-
-      margin-top: 35px;
-      margin-bottom: 18px;
-    }
-
-    .post-markdown-body h4 {
-      font-size: 20px !important;
-
-      margin-top: 30px;
-    }
-
-    .post-markdown-body ul,
-    .post-markdown-body ol {
-      font-size: 18px !important;
-
-      line-height: 2.2 !important;
-
-      padding-right: 25px !important;
-    }
-
-    .post-markdown-body blockquote {
-      font-size: 18px !important;
-
-      line-height: 2.2 !important;
-
-      padding: 12px 18px;
-
-      margin: 30px 0;
-    }
-
-    .page-footer {
-      max-width: 100%;
-
-      margin-top: 40px !important;
-
-      align-items: flex-start;
-
-      flex-direction: column;
-    }
-
-    .page-share {
-      width: 100%;
-    }
-
-    .page-tag {
-      width: 100%;
-    }
-  }
-</style>
+</article>
 ```
