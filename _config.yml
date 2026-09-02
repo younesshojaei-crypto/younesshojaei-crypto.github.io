@@ -1,53 +1,24 @@
-# Site Settings
-name: 'نویز | NOYS'
 title: 'نویز | NOYS'
+name: 'نویز | NOYS'
 description: 'روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه'
 logo: 'https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no'
-favicon: 'https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no'
+avatar: 'https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no'
 baseurl: ""
+url: "https://noysdc.ir"
 email: 'noysdc.media@gmail.com'
 
-# Social Links
 social:
   youtube: 'https://www.youtube.com/@NOYS-DC/videos'
   instagram: 'https://instagram.com/noysdc'
   castbox: 'https://castbox.fm/vh/7361321'
   substack: 'https://noysdc.substack.com/?r=5jvyln&utm_campaign=pub-share-checklist'
 
-include: ["_pages"]
-permalink: /:title/
-
-# Plugins
-plugins: 
+plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-seo-tag
 
-authors:
-  youness:
-    name: یونس شجاعی
-    site: https://younesshojaei-crypto.github.io
-    avatar: https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no
-    bio: "روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه"
-    email: noysdc.media@gmail.com
-
-# Defaults
-defaults:
-  - scope:
-      path: "_posts"
-    values:
-      layout: post
-      author: youness
-      avatar: https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no
-      
-  - scope:
-      path: "_pages"
-    values:
-      layout: page
-
-markdown: kramdown
-highlighter: rouge
+permalink: /:title/
 paginate: 10
-
-exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]
+markdown: kramdown
