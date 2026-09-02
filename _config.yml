@@ -3,23 +3,12 @@ description: "روایت‌های داستانی از کسب‌ و کارهای 
 permalink: ':title/'
 baseurl: ""
 url: "https://noysdc.ir"
-site-twitter: 
 
 # Author Settings
-author: یونس شجاعی
-author-img: assets/css/fonts/img/avatar.png
-about-author: مستندساز و روایت‌گر پرونده‌های سایه، بیزینس‌های ممنوعه و جریان‌های تاریک اقتصادی.
-social-twitter: 
-social-facebook: 
-social-github: younesshojaei-crypto
-social-linkedin: 
-social-email: 
-
-# Disqus
-discus-identifier: 
-
-# Tracker
-analytics: 
+author: "یونس شجاعی"
+author-img: "assets/css/fonts/img/avatar.png"
+about-author: "مستندساز و روایت‌گر پرونده‌های سایه، بیزینس‌های ممنوعه و جریان‌های تاریک اقتصادی."
+social-github: "younesshojaei-crypto"
 
 # Build Settings
 markdown: kramdown
