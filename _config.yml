@@ -1,12 +1,18 @@
-# Site
+# Site Settings
 name: 'نویز | NOYS'
+title: 'نویز | NOYS'
 description: 'روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه'
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/favicon.ico'
+logo: 'https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no'
+favicon: 'https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no'
 baseurl: ""
-disqus: ''
-email: 'younesshojaei@gmail.com'
-mailchimp-list: ''
+email: 'noysdc.media@gmail.com'
+
+# Social Links
+social:
+  youtube: 'https://www.youtube.com/@NOYS-DC/videos'
+  instagram: 'https://instagram.com/noysdc'
+  castbox: 'https://castbox.fm/vh/7361321'
+  substack: 'https://noysdc.substack.com/?r=5jvyln&utm_campaign=pub-share-checklist'
 
 include: ["_pages"]
 permalink: /:title/
@@ -19,37 +25,29 @@ plugins:
   - jekyll-seo-tag
 
 authors:
-    youness:
-      name:           یونس شجاعی
-      site:           https://younesshojaei-crypto.github.io
-      avatar:         /assets/images/avatar1.jpg
-      bio:            "روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه"
-      email:          younesshojaei@gmail.com
-      twitter:        https://twitter.com/younesshojaei
+  youness:
+    name: یونس شجاعی
+    site: https://younesshojaei-crypto.github.io
+    avatar: https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no
+    bio: "روایت‌های داستانی از کسب‌ و کارهای سایه و بیزینس‌های ممنوعه"
+    email: noysdc.media@gmail.com
 
 # Defaults
 defaults:
-
-  # all posts
   - scope:
       path: "_posts"
     values:
       layout: post
       author: youness
-      avatar: /assets/images/avatar1.jpg
+      avatar: https://lh3.googleusercontent.com/a/ACg8ocJy7CONw2GWxSgt9T1kUfgviFSKn5sB9vZNK5-ZChrFW8zHwmg=s504-c-no
       
-  # all pages
   - scope:
       path: "_pages"
     values:
       layout: page
-      
-# Syntax
+
 markdown: kramdown
 highlighter: rouge
-
-# Paginate
 paginate: 10
 
-# Exclude metadata and development time dependencies (like Grunt plugins)
 exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]
