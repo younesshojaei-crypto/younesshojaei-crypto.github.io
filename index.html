@@ -21,9 +21,6 @@ layout: default
         <span class="date">{{ post.date | date: "%Y/%m/%d" }}</span>
         <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       </header>
-      {% if post.image %}
-        <a href="{{ post.url | relative_url }}" class="image fit"><img src="{{ post.image }}" alt="{{ post.title }}" /></a>
-      {% endif %}
       <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
       <ul class="actions special">
         <li><a href="{{ post.url | relative_url }}" class="button">مطالعه مقاله</a></li>
