@@ -75,13 +75,11 @@ body .sidebar {
   z-index: 100;
 }
 
-/* تنظیم فاصله کل صفحه (هم صفحه اصلی و هم داخل پست‌ها) از سایدبار */
+/* کانتینرهای اصلی و صفحات مقاله */
 .content-box, 
-.post-content, 
+.article-page, 
 .page-content, 
-.post, 
-main, 
-article {
+main {
   padding-right: 280px !important;
   padding-left: 40px !important;
   direction: rtl !important;
@@ -92,9 +90,7 @@ article {
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: stretch;
+  flex-direction: column;
 }
 
 /* Sidebar Details */
@@ -185,7 +181,7 @@ footer .copyright {
   overflow: hidden;
   transition: all .3s ease;
   box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
-  padding: 0 !important; /* لغو پدینگ عمومی برای کارت‌ها */
+  padding: 0 !important;
 }
 
 .content-box .post:hover {
@@ -216,30 +212,36 @@ footer .copyright {
   color: #263959;
 }
 
-/* اصلاح چیدمان لیست‌ها و دکمه‌های اجتماعی داخل پست */
-ul, ol {
+/* اصلاح محتوای متنی و لیست‌ها داخل پست */
+.wrap-content {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.wrap-content ul, 
+.wrap-content ol {
   padding-right: 25px !important;
   padding-left: 0 !important;
   direction: rtl !important;
+  margin-bottom: 20px !important;
 }
 
-li {
+.wrap-content li {
   text-align: right !important;
-  margin-bottom: 5px;
+  margin-bottom: 8px !important;
 }
 
-.post-footer, .share, .page-share {
+.page-footer, .page-share {
   margin-top: 30px !important;
-  display: block !important;
-  clear: both !important;
+  display: flex !important;
+  gap: 15px !important;
   direction: rtl !important;
   text-align: right !important;
 }
 
-.post-footer a, .share a, .page-share a {
+.page-share a {
   margin-left: 15px !important;
   margin-right: 0 !important;
-  display: inline-block !important;
 }
 
 /* Mobile Responsive */
@@ -253,11 +255,9 @@ li {
   }
   
   .content-box, 
-  .post-content, 
+  .article-page, 
   .page-content, 
-  .post, 
-  main, 
-  article {
+  main {
     padding-right: 15px !important;
     padding-left: 15px !important;
   }
