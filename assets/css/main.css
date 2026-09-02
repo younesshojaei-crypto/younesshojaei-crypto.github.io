@@ -1,435 +1,1336 @@
 /* =========================================================
-   NOYS — ARTICLE / POST PAGE
+   NOYS
+   Main Stylesheet
+   RTL / Persian / Vazirmatn
    ========================================================= */
 
-/* ---------- صفحه اصلی مقاله ---------- */
+
+/* =========================================================
+   FONT
+   ========================================================= */
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('../fonts/Vazirmatn-RD-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('../fonts/Vazirmatn-RD-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* =========================================================
+   RESET / NORMALIZE
+   ========================================================= */
+
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Vazirmatn', sans-serif !important;
+  direction: rtl !important;
+  text-align: right !important;
+  background-color: #fbfbfb;
+  color: #515151;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+span,
+div,
+article,
+section,
+header,
+footer,
+nav,
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: 'Vazirmatn', sans-serif !important;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+a {
+  background-color: transparent;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+   ========================================================= */
+
+.wrapper {
+  max-width: 1250px;
+  position: relative;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+body .sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  left: auto;
+  bottom: 0;
+
+  width: 260px;
+  height: 100%;
+
+  padding: 20px 15px;
+
+  background-color: #ffffff;
+
+  border-left: 1px solid #eef2f8;
+  border-right: none;
+
+  z-index: 100;
+}
+
+
+/* =========================================================
+   MAIN PAGE AREA
+   صفحه اصلی و ساختار کلی
+   ========================================================= */
+
+.content-box,
+.article-page,
+.page-content,
+main {
+  direction: rtl !important;
+  text-align: right !important;
+
+  width: calc(100% - 260px) !important;
+
+  margin-right: 260px !important;
+  margin-left: 0 !important;
+
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+
+  box-sizing: border-box;
+}
+
+.content-box {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   مهم:
+   اصلاح ساختار صفحه POST
+   ========================================================= */
+
+/*
+   article-page داخل content-box قرار دارد.
+
+   قبلاً article-page دوباره:
+   width: calc(100% - 260px)
+   margin-right: 260px
+
+   می‌گرفت و باعث می‌شد صفحه مقاله
+   بیش از حد باریک شود.
+
+   این قوانین فقط برای article-page داخل content-box هستند.
+*/
 
 .content-box > .article-page {
   width: 100% !important;
+
   max-width: none !important;
-  margin: 0 !important;
-  padding: 30px 0 60px !important;
-  direction: rtl !important;
-  text-align: right !important;
+
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+
   box-sizing: border-box;
 }
 
 
 /* =========================================================
-   تصویر اصلی مقاله
+   SIDEBAR CONTENT
+   ========================================================= */
+
+.about {
+  margin: 0 0 40px;
+  text-align: center;
+}
+
+.about .cover-author-image {
+  width: 100px;
+  height: 100px;
+
+  margin: 0 auto 10px;
+
+  border-radius: 100%;
+  overflow: hidden;
+
+  background-color: #333030;
+}
+
+.about img {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  transition: transform 0.35s;
+}
+
+.about .author-name {
+  margin: 0 0 10px;
+
+  position: relative;
+
+  padding-bottom: 15px;
+
+  font-size: 16px;
+
+  text-transform: uppercase;
+
+  color: #333030;
+
+  font-weight: 700;
+}
+
+.about .author-name::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  bottom: 0;
+
+  display: block;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 100%;
+
+  background-color: #515151;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact .contact-title {
+  position: relative;
+
+  color: #333030;
+
+  font-weight: 400;
+
+  font-size: 12px;
+
+  margin: 0 0 5px;
+
+  text-transform: uppercase;
+
+  text-align: center;
+}
+
+.contact ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  text-align: center;
+}
+
+.contact ul li {
+  display: inline-block;
+
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer .copyright {
+  font-size: 14px;
+
+  text-align: center;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   HOMEPAGE POST CARDS
+   صفحه اول
+   ========================================================= */
+
+.content-box > .post {
+  width: 100%;
+  max-width: 100%;
+
+  margin-bottom: 1.5rem;
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: stretch;
+
+  min-height: 11rem;
+
+  border-radius: 10px;
+
+  background-color: #fff;
+
+  overflow: hidden;
+
+  transition: all .3s ease;
+
+  box-shadow:
+    0 1px 1px 0 rgba(31, 35, 46, 0.15);
+
+  padding: 0 !important;
+}
+
+.content-box > .post:hover {
+  transform: translate(0px, -2px);
+
+  box-shadow:
+    0 15px 45px -10px rgba(10, 16, 34, 0.2);
+}
+
+
+/* =========================================================
+   HOMEPAGE THUMBNAIL
+   ========================================================= */
+
+.content-box > .post .post-thumbnail {
+  width: 40%;
+
+  aspect-ratio: 16 / 9;
+
+  min-height: 0;
+
+  display: block;
+
+  flex-shrink: 0;
+
+  background-size: cover;
+
+  background-position: center center;
+
+  background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   HOMEPAGE CARD TEXT
+   ========================================================= */
+
+.content-box > .post .post-content {
+  width: 60%;
+
+  padding: 1.5rem !important;
+
+  text-align: right !important;
+}
+
+.content-box > .post .post-content .post-title {
+  margin: 0 0 10px;
+
+  font-size: 24px;
+
+  line-height: 1.7;
+}
+
+.content-box > .post .post-content .post-title a {
+  text-decoration: none;
+
+  color: #263959;
+}
+
+
+/* =========================================================
+   ARTICLE PAGE
+   صفحه داخلی پست
+   ========================================================= */
+
+.article-page {
+  width: 100% !important;
+
+  max-width: none !important;
+
+  padding-top: 30px !important;
+
+  padding-bottom: 60px !important;
+}
+
+
+/* =========================================================
+   ARTICLE INNER CONTAINER
+   ========================================================= */
+
+/*
+   این قسمت مهم‌ترین تغییر است.
+
+   متن مقاله روی دسکتاپ حدود 920px عرض دارد،
+   ولی کل صفحه از فضای موجود استفاده می‌کند.
+*/
+
+.article-page .page-content {
+  width: 100% !important;
+
+  max-width: 1100px !important;
+
+  margin-right: auto !important;
+  margin-left: auto !important;
+
+  padding: 0 !important;
+
+  direction: rtl !important;
+  text-align: right !important;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   COVER IMAGE
    ========================================================= */
 
 .article-page .page-cover-image {
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto 30px;
-  padding: 0;
+
+  margin: 0 auto 35px;
 }
 
 .article-page .page-cover-image figure {
   width: 100%;
+
   margin: 0;
-  padding: 0;
 }
 
-.article-page .page-cover-image .page-image {
+.article-page .page-cover-image img {
   display: block;
-  width: 100%;
-  max-width: 720px;
+
+  width: 100% !important;
+
+  max-width: 100% !important;
+
   height: auto;
-  margin: 0 auto;
-  border-radius: 10px;
-  object-fit: cover;
+
+  border-radius: 8px;
 }
 
 .article-page .page-cover-image figcaption {
-  margin: 10px 0 0;
-  padding: 0;
+  margin-top: 8px;
+
   text-align: center;
-  font-size: 13px;
+
+  color: #777;
+
+  font-size: 14px;
+
   line-height: 1.8;
-  color: #888;
 }
 
 
 /* =========================================================
-   محدوده محتوای مقاله
+   ARTICLE WRAPPER
    ========================================================= */
 
 .article-page .wrap-content {
-  width: 100%;
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0;
+  width: 100% !important;
+
+  max-width: 920px !important;
+
+  margin-right: auto !important;
+  margin-left: auto !important;
+
+  padding: 0 !important;
+
+  direction: rtl !important;
+
+  text-align: right !important;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
+  color: #3f3f3f;
+
   box-sizing: border-box;
 }
 
 
 /* =========================================================
-   هدر مقاله
+   ARTICLE HEADER
    ========================================================= */
 
 .article-page .header-page {
   width: 100%;
+
   max-width: 920px;
-  margin: 0 auto 35px;
-  padding: 0;
-  text-align: right;
+
+  margin: 0 auto 30px;
+
+  border-bottom: 1px solid #eef2f8;
+
+  padding-bottom: 18px;
 }
 
 .article-page .page-title {
   width: 100%;
-  margin: 0 0 12px;
-  padding: 0;
-  font-size: 42px;
-  line-height: 1.6;
+
+  margin: 0 0 10px;
+
+  font-size: 38px;
+
   font-weight: 700;
+
+  line-height: 1.7;
+
   color: #222;
+
   text-align: right;
 }
 
 .article-page .page-date {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.8;
   color: #888;
-  text-align: right;
+
+  font-size: 14px;
+
+  line-height: 1.8;
 }
 
 
 /* =========================================================
-   متن مقاله
+   ARTICLE TEXT
    ========================================================= */
 
 .article-page .post-markdown-body {
   width: 100%;
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0;
-  direction: rtl;
-  text-align: right;
-  font-size: 19px;
-  line-height: 2.25;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
   color: #3f3f3f;
-  box-sizing: border-box;
 }
-
-
-/* پاراگراف‌ها */
 
 .article-page .post-markdown-body p {
-  margin: 0 0 25px;
-  padding: 0;
+  margin-top: 0;
+
+  margin-bottom: 30px;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
+  font-weight: 400;
 }
 
 
-/* تیترهای داخل مقاله */
+/* =========================================================
+   ARTICLE HEADINGS
+   ========================================================= */
 
 .article-page .post-markdown-body h2 {
-  margin: 55px 0 20px;
-  font-size: 29px;
-  line-height: 1.7;
+  margin-top: 60px;
+
+  margin-bottom: 25px;
+
+  font-size: 30px !important;
+
+  line-height: 1.7 !important;
+
   font-weight: 700;
+
   color: #222;
 }
 
 .article-page .post-markdown-body h3 {
-  margin: 45px 0 18px;
-  font-size: 24px;
-  line-height: 1.7;
+  margin-top: 45px;
+
+  margin-bottom: 20px;
+
+  font-size: 24px !important;
+
+  line-height: 1.8 !important;
+
   font-weight: 700;
+
   color: #222;
 }
 
 .article-page .post-markdown-body h4 {
-  margin: 35px 0 15px;
-  font-size: 21px;
-  line-height: 1.7;
+  margin-top: 35px;
+
+  margin-bottom: 15px;
+
+  font-size: 21px !important;
+
+  line-height: 1.8 !important;
+
   font-weight: 700;
-  color: #333;
-}
 
-
-/* لینک‌ها */
-
-.article-page .post-markdown-body a {
   color: #222;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 
-/* لیست‌ها */
+/* =========================================================
+   ARTICLE LISTS
+   ========================================================= */
 
 .article-page .post-markdown-body ul,
 .article-page .post-markdown-body ol {
-  margin: 0 0 30px;
-  padding-right: 30px;
-  padding-left: 0;
+  padding-right: 30px !important;
+
+  padding-left: 0 !important;
+
+  margin-top: 0;
+
+  margin-bottom: 30px;
+
+  font-size: 19px !important;
+
+  line-height: 2.25 !important;
+
+  direction: rtl !important;
 }
 
 .article-page .post-markdown-body li {
   margin-bottom: 10px;
-}
 
-
-/* نقل قول */
-
-.article-page .post-markdown-body blockquote {
-  margin: 35px 0;
-  padding: 15px 25px;
-  border-right: 4px solid #222;
-  border-left: none;
-  background: #f7f7f7;
-  color: #555;
-  font-size: 18px;
-  line-height: 2.1;
+  text-align: right !important;
 }
 
 
 /* =========================================================
-   تصاویر داخل متن مقاله
+   BLOCKQUOTE
+   ========================================================= */
+
+.article-page .post-markdown-body blockquote {
+  margin: 40px 0;
+
+  padding: 15px 25px;
+
+  border-right: 3px solid #555;
+
+  border-left: none;
+
+  color: #555;
+
+  font-size: 19px !important;
+
+  line-height: 2.2 !important;
+
+  background: #f5f5f5;
+}
+
+
+/* =========================================================
+   ARTICLE LINKS
+   ========================================================= */
+
+.article-page .post-markdown-body a {
+  color: inherit;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 3px;
+}
+
+
+/* =========================================================
+   ARTICLE IMAGES
    ========================================================= */
 
 .article-page .post-markdown-body img {
   display: block;
-  width: auto;
-  max-width: 100%;
+
+  width: auto !important;
+
+  max-width: 100% !important;
+
   height: auto;
-  margin: 35px auto;
+
+  margin: 40px auto;
+
   border-radius: 8px;
+}
+
+.article-page .post-markdown-body figure {
+  margin: 40px 0;
+}
+
+.article-page .post-markdown-body figcaption {
+  margin-top: -25px;
+
+  margin-bottom: 35px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: #888;
 }
 
 
 /* =========================================================
-   ویدیو یوتیوب
+   VIDEO
    ========================================================= */
 
-.article-page .video-container {
+.video-container {
   position: relative;
+
   width: 100%;
-  max-width: 820px;
-  margin: 30px auto 45px;
-  aspect-ratio: 16 / 9;
+
+  height: 0;
+
+  padding-bottom: 56.25%;
+
   overflow: hidden;
-  border-radius: 10px;
+
+  max-width: 100%;
+
   background: #000;
+
+  border-radius: 8px;
+
+  margin: 35px auto;
 }
 
-.article-page .video-container iframe {
+.video-container iframe,
+.video-container object,
+.video-container embed {
   position: absolute;
+
   top: 0;
-  right: 0;
+  left: 0;
+
   width: 100%;
   height: 100%;
+
   border: 0;
 }
 
 
 /* =========================================================
-   پادکست Castbox
+   PODCAST
    ========================================================= */
 
-.article-page .podcast-container {
+.podcast-container {
   width: 100%;
-  max-width: 820px;
-  margin: 30px auto 45px;
+
+  margin: 35px auto;
+
+  border-radius: 8px;
+
   overflow: hidden;
-  border-radius: 10px;
+
+  background: #fdfdfd;
 }
 
-.article-page .podcast-container iframe {
-  display: block;
+.podcast-container iframe {
   width: 100%;
-  max-width: 100%;
-  height: 500px;
-  border: 0;
+
+  border: none;
 }
 
 
 /* =========================================================
-   خبرنامه Substack
+   ARTICLE IFRAME
    ========================================================= */
 
-.article-page .footer-subscription {
-  width: 100%;
-  max-width: 600px;
-  margin: 60px auto 0;
-  padding-top: 30px;
-  border-top: 1px solid #eee;
-  text-align: center;
-  direction: rtl;
-}
-
-.article-page .footer-subscription h3 {
-  margin: 0 0 10px;
-  font-size: 21px;
-  line-height: 1.7;
-  font-weight: 700;
-  color: #222;
-}
-
-.article-page .footer-subscription .newsletter-description {
-  margin: 0 0 25px;
-  color: #888;
-  font-size: 15px;
-  line-height: 2;
-}
-
-.article-page .substack-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.article-page .substack-wrapper iframe {
+.article-page .post-markdown-body iframe {
   display: block;
-  width: 100%;
-  max-width: 480px;
-  height: 320px;
-  border: 1px solid #eee;
-  background: #fff;
+
+  width: 100% !important;
+
+  max-width: 100% !important;
+
+  margin: 35px auto;
+
   border-radius: 8px;
 }
 
 
 /* =========================================================
-   فوتر مقاله / اشتراک‌گذاری
+   HORIZONTAL LINE
+   ========================================================= */
+
+.article-page .post-markdown-body hr {
+  margin: 45px 0;
+
+  border: 0;
+
+  border-top: 1px solid #e5e5e5;
+}
+
+
+/* =========================================================
+   ARTICLE FOOTER
    ========================================================= */
 
 .article-page .page-footer {
   width: 100%;
+
   max-width: 920px;
-  margin: 50px auto 0;
-  padding-top: 25px;
-  border-top: 1px solid #eee;
+
+  margin: 50px auto 0 !important;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #eef2f8;
+
+  display: flex !important;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 15px;
+
+  direction: rtl !important;
+
+  text-align: right !important;
 }
+
+
+/* =========================================================
+   SHARE
+   ========================================================= */
 
 .article-page .page-share {
-  margin-bottom: 20px;
-  text-align: right;
-}
+  display: flex !important;
 
-.article-page .page-share span {
-  margin-left: 10px;
-  font-size: 14px;
-  color: #777;
+  align-items: center;
+
+  gap: 10px;
+
+  direction: rtl !important;
 }
 
 .article-page .page-share a {
-  display: inline-block;
-  margin-left: 10px;
+  color: #555;
+
+  font-size: 18px;
+
   text-decoration: none;
+
+  margin-left: 0 !important;
+
+  margin-right: 0 !important;
+
+  transition: color 0.2s;
 }
 
+.article-page .page-share a:hover {
+  color: #263959;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
 .article-page .page-tag {
-  text-align: right;
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
 }
 
 .article-page .page-tag .tag {
   display: inline-block;
-  margin-left: 8px;
-  margin-bottom: 8px;
+
+  background: #f0f4f8;
+
   padding: 4px 10px;
-  border-radius: 5px;
-  background: #f2f2f2;
-  color: #666;
-  font-size: 13px;
+
+  border-radius: 4px;
+
   text-decoration: none;
+
+  color: #555;
+
+  font-size: 13px;
+
+  line-height: 1.8;
 }
 
 
 /* =========================================================
-   موبایل
+   NEWSLETTER / FOOTER SUBSCRIPTION
    ========================================================= */
 
-@media (max-width: 768px) {
+.footer-subscription {
+  max-width: 600px;
 
-  .content-box > .article-page {
-    padding: 20px 0 40px !important;
+  margin: 50px auto 0;
+
+  text-align: center;
+
+  direction: rtl;
+}
+
+.footer-subscription h3 {
+  margin: 0 0 10px;
+
+  font-size: 21px;
+
+  line-height: 1.7;
+
+  font-weight: 700;
+}
+
+.footer-subscription .newsletter-description {
+  margin: 0 0 25px;
+
+  color: #888;
+
+  font-size: 15px;
+
+  line-height: 2;
+}
+
+.substack-wrapper {
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+}
+
+.substack-wrapper iframe {
+  display: block;
+
+  width: 100%;
+
+  max-width: 480px;
+
+  border: 1px solid #333;
+
+  background: #fff;
+
+  border-radius: 8px;
+}
+
+.footer-email {
+  margin-top: 22px;
+
+  font-size: 14px;
+
+  color: #888;
+
+  line-height: 2;
+}
+
+.footer-email a {
+  color: #333;
+
+  text-decoration: underline;
+
+  direction: ltr;
+
+  display: inline-block;
+}
+
+.footer-email a:hover {
+  opacity: .7;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media only screen and (max-width: 768px) {
+
+  /* SIDEBAR */
+
+  body .sidebar {
+    position: relative !important;
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    top: auto;
+
+    right: auto;
+
+    bottom: auto;
+
+    border-left: none !important;
+
+    border-bottom: 1px solid #eef2f8 !important;
   }
 
-  /* تصویر اصلی */
+
+  /* MAIN */
+
+  .content-box,
+  .article-page,
+  .page-content,
+  main {
+    width: 100% !important;
+
+    margin-right: 0 !important;
+
+    padding-right: 18px !important;
+
+    padding-left: 18px !important;
+  }
+
+
+  /* IMPORTANT:
+     Article must not receive the desktop
+     260px sidebar margin on mobile.
+  */
+
+  .content-box > .article-page {
+    width: 100% !important;
+
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+
+  /* HOMEPAGE CARDS */
+
+  .content-box > .post {
+    flex-direction: column;
+  }
+
+  .content-box > .post .post-thumbnail,
+  .content-box > .post .post-content {
+    width: 100% !important;
+  }
+
+  .content-box > .post .post-thumbnail {
+    aspect-ratio: 16 / 9;
+
+    min-height: 0;
+
+    width: 100% !important;
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+  }
+
+
+  /* ARTICLE */
+
+  .article-page {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    padding-top: 20px !important;
+
+    padding-bottom: 40px !important;
+  }
+
+  .article-page .page-content {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    margin: 0 auto;
+
+    padding: 0 !important;
+  }
+
+
+  /* COVER */
+
   .article-page .page-cover-image {
-    max-width: 100%;
+    width: 100%;
+
     margin-bottom: 25px;
   }
 
-  .article-page .page-cover-image .page-image {
-    max-width: 100%;
-    border-radius: 7px;
+  .article-page .page-cover-image img {
+    width: 100% !important;
+
+    border-radius: 6px;
   }
 
-  /* محتوای مقاله */
-  .article-page .wrap-content,
-  .article-page .post-markdown-body,
+
+  /* ARTICLE TEXT */
+
+  .article-page .wrap-content {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    padding: 0 !important;
+
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+  }
+
+
+  /* HEADER */
+
   .article-page .header-page {
+    width: 100%;
+
     max-width: 100%;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 15px;
   }
 
-  /* عنوان */
   .article-page .page-title {
-    font-size: 30px;
-    line-height: 1.65;
+    font-size: 30px !important;
+
+    line-height: 1.7 !important;
+
+    margin-bottom: 10px;
   }
 
-  /* متن */
-  .article-page .post-markdown-body {
-    font-size: 17px;
-    line-height: 2.15;
+  .article-page .page-date {
+    font-size: 13px;
   }
+
+
+  /* BODY */
+
+  .article-page .post-markdown-body {
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+  }
+
+  .article-page .post-markdown-body p {
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+
+    margin-bottom: 26px;
+  }
+
+
+  /* HEADINGS */
 
   .article-page .post-markdown-body h2 {
-    font-size: 25px;
+    font-size: 26px !important;
+
+    line-height: 1.7 !important;
+
+    margin-top: 45px;
+
+    margin-bottom: 20px;
   }
 
   .article-page .post-markdown-body h3 {
-    font-size: 21px;
+    font-size: 22px !important;
+
+    line-height: 1.8 !important;
+
+    margin-top: 35px;
+
+    margin-bottom: 18px;
   }
 
-  /* ویدیو */
-  .article-page .video-container {
-    width: 100%;
-    margin: 25px auto 35px;
-    border-radius: 7px;
+  .article-page .post-markdown-body h4 {
+    font-size: 20px !important;
+
+    margin-top: 30px;
   }
 
-  /* پادکست */
-  .article-page .podcast-container {
-    width: 100%;
-    margin: 25px auto 35px;
+
+  /* LISTS */
+
+  .article-page .post-markdown-body ul,
+  .article-page .post-markdown-body ol {
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+
+    padding-right: 25px !important;
   }
 
-  .article-page .podcast-container iframe {
-    height: 500px;
-  }
 
-  /* خبرنامه */
-  .article-page .footer-subscription {
-    max-width: 100%;
-  }
-
-}
-
-
-/* =========================================================
-   موبایل خیلی کوچک
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-  .article-page .page-title {
-    font-size: 26px;
-  }
-
-  .article-page .post-markdown-body {
-    font-size: 16px;
-    line-height: 2.1;
-  }
+  /* BLOCKQUOTE */
 
   .article-page .post-markdown-body blockquote {
+    font-size: 18px !important;
+
+    line-height: 2.2 !important;
+
     padding: 12px 18px;
-    font-size: 16px;
+
+    margin: 30px 0;
   }
 
+
+  /* FOOTER */
+
+  .article-page .page-footer {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-top: 40px !important;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .article-page .page-share {
+    width: 100%;
+  }
+
+  .article-page .page-tag {
+    width: 100%;
+  }
+
+
+  /* NEWSLETTER */
+
+  .footer-subscription {
+    padding: 0 10px;
+  }
+
+  .footer-subscription h3 {
+    font-size: 19px;
+  }
+
+  .footer-email {
+    font-size: 13px;
+  }
 }
