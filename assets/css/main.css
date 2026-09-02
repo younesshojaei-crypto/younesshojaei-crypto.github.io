@@ -1479,3 +1479,18 @@ a.newer-posts:hover {
     font-size: 21px;
   }
 }
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+body, html, h1, h2, h3, h4, h5, h6, p, a, li, span, div, header, nav, footer {
+    font-family: 'Vazirmatn', sans-serif !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+/* اصلاح نمایش پلیر پادکست و یوتیوب */
+iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
