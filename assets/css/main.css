@@ -1469,3 +1469,21 @@ body {
   margin-right: 300px !important;
   margin-left: 0 !important;
 }
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+body {
+  font-family: 'Vazirmatn', sans-serif !important;
+  direction: rtl;
+  text-align: right;
+}
+
+.sidebar {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.content {
+  margin-right: 300px !important;
+  margin-left: 0 !important;
+}
