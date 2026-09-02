@@ -1,34 +1,37 @@
 ---
 layout: main
 ---
-<article class="article-page">
+<article class="article-page" style="direction: rtl; text-align: right; padding-right: 280px; padding-left: 40px; padding-top: 30px;">
   <div class="page-content">
     {% if page.img %}
-    <div class="page-cover-image">
+    <div class="page-cover-image" style="margin-bottom: 20px;">
       <figure>
-        <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
+        <img class="page-image" src="{{ page.img | prepend: '/assets/img/' | relative_url }}" alt="{{page.title}}" style="width: 100%; border-radius: 8px;">
         {% if page.fig-caption %}
-          <figcaption>{{page.fig-caption}}</figcaption>
+          <figcaption style="text-align: center; color: #777; font-size: 14px; margin-top: 5px;">{{page.fig-caption}}</figcaption>
         {% endif %}
       </figure>
-    </div> <!-- End Page Cover Image -->
-    {% else %}
+    </div>
     {% endif %}
+    
     <div class="wrap-content">
-      <header class="header-page">
-        <h1 class="page-title">{{page.title}}</h1>
-        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      <header class="header-page" style="margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+        <h1 class="page-title" style="font-family: 'Vazirmatn', sans-serif !important; font-size: 28px; font-weight: 700; margin-bottom: 10px;">{{page.title}}</h1>
+        <div class="page-date" style="color: #888; font-size: 14px;"><span>{{page.date | date: '%Y, %b %d'}}</span></div>
       </header>
-      {{content | markdownify}}
-      <div class="page-footer">
-        <div class="page-share">
-          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
-          <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-          <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+      
+      <div class="post-markdown-body" style="font-family: 'Vazirmatn', sans-serif !important; font-size: 16px; line-height: 1.8; color: #333;">
+        {{ content }}
+      </div>
+
+      <div class="page-footer" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; direction: rtl;">
+        <div class="page-share" style="display: flex; gap: 15px;">
+          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank" style="text-decoration: none; color: #1da1f2;">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank" style="text-decoration: none; color: #4267b2;">Facebook</a>
         </div>
         <div class="page-tag">
           {% for tag in page.tags %}
-            <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
+            <a href="{{site.baseurl}}/tags#{{tag}}" class="tag" style="margin-left: 5px; background: #f0f0f0; padding: 3px 8px; border-radius: 4px; text-decoration: none; color: #555;">&#35; {{ tag }}</a>
           {% endfor %}
         </div>
       </div>
@@ -36,3 +39,22 @@ layout: main
     </div> <!-- End Wrap Content -->
   </div> <!-- End Page Content -->
 </article> <!-- End Article Page -->
+
+<style>
+  .post-markdown-body ul, .post-markdown-body ol {
+    padding-right: 25px !important;
+    padding-left: 0 !important;
+    margin-bottom: 20px !important;
+    direction: rtl !important;
+  }
+  .post-markdown-body li {
+    margin-bottom: 8px !important;
+    text-align: right !important;
+  }
+  @media only screen and (max-width: 768px) {
+    .article-page {
+      padding-right: 15px !important;
+      padding-left: 15px !important;
+    }
+  }
+</style>
