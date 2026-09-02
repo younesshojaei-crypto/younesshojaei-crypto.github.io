@@ -567,9 +567,9 @@ footer .copyright {
 
   text-align: right !important;
 
-  font-size: 19px !important;
+  font-size: 16px !important;
 
-  line-height: 2.25 !important;
+  line-height: 1.9 !important;
 
   color: #3f3f3f;
 
@@ -625,9 +625,9 @@ footer .copyright {
 .article-page .post-markdown-body {
   width: 100%;
 
-  font-size: 19px !important;
+  font-size: 16px !important;
 
-  line-height: 2.25 !important;
+  line-height: 1.9 !important;
 
   color: #3f3f3f;
 }
@@ -637,9 +637,9 @@ footer .copyright {
 
   margin-bottom: 30px;
 
-  font-size: 19px !important;
+  font-size: 16px !important;
 
-  line-height: 2.25 !important;
+  line-height: 1.9 !important;
 
   font-weight: 400;
 }
@@ -706,9 +706,9 @@ footer .copyright {
 
   margin-bottom: 30px;
 
-  font-size: 19px !important;
+  font-size: 16px !important;
 
-  line-height: 2.25 !important;
+  line-height: 1.9 !important;
 
   direction: rtl !important;
 }
@@ -735,9 +735,9 @@ footer .copyright {
 
   color: #555;
 
-  font-size: 19px !important;
+  font-size: 16px !important;
 
-  line-height: 2.2 !important;
+  line-height: 1.9 !important;
 
   background: #f5f5f5;
 }
@@ -854,6 +854,30 @@ footer .copyright {
   width: 100%;
 
   border: none;
+}
+
+.embed-section {
+  width: 100%;
+
+  max-width: 920px;
+
+  margin: 45px auto 0;
+
+  direction: rtl;
+
+  text-align: right;
+}
+
+.embed-section-title {
+  margin: 0 0 15px;
+
+  font-size: 21px;
+
+  line-height: 1.7;
+
+  font-weight: 700;
+
+  color: #222;
 }
 
 
@@ -1195,9 +1219,9 @@ footer .copyright {
 
     padding: 0 !important;
 
-    font-size: 18px !important;
+    font-size: 15px !important;
 
-    line-height: 2.2 !important;
+    line-height: 1.9 !important;
   }
 
 
@@ -1229,15 +1253,15 @@ footer .copyright {
   /* BODY */
 
   .article-page .post-markdown-body {
-    font-size: 18px !important;
+    font-size: 15px !important;
 
-    line-height: 2.2 !important;
+    line-height: 1.9 !important;
   }
 
   .article-page .post-markdown-body p {
-    font-size: 18px !important;
+    font-size: 15px !important;
 
-    line-height: 2.2 !important;
+    line-height: 1.9 !important;
 
     margin-bottom: 26px;
   }
@@ -1276,9 +1300,9 @@ footer .copyright {
 
   .article-page .post-markdown-body ul,
   .article-page .post-markdown-body ol {
-    font-size: 18px !important;
+    font-size: 15px !important;
 
-    line-height: 2.2 !important;
+    line-height: 1.9 !important;
 
     padding-right: 25px !important;
   }
@@ -1287,9 +1311,9 @@ footer .copyright {
   /* BLOCKQUOTE */
 
   .article-page .post-markdown-body blockquote {
-    font-size: 18px !important;
+    font-size: 15px !important;
 
-    line-height: 2.2 !important;
+    line-height: 1.9 !important;
 
     padding: 12px 18px;
 

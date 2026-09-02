@@ -9,18 +9,19 @@ site-twitter:
 
 # Author Settings
 author: NOYS
-author-img: david-freeman.jpg
+author-img: avatar.png
 about-author: روایت‌هایی درباره پرونده‌های واقعی، کسب‌وکارهای سایه، بازارهای سیاه و داستان‌هایی که ارزش دوباره شنیدن دارند.
 
 social-twitter:
 social-facebook:
 social-github:
 social-linkedin:
-social-email:
+social-email: "noysdc.media@gmail.com"
 
 # NOYS Social Media
-social-youtube: "https://www.youtube.com/@NOYS-DC"
+social-youtube: "https://www.youtube.com/@NOYS-DC/videos"
 social-instagram: "https://instagram.com/noysdc"
+social-castbox: "https://castbox.fm/vh/7361321"
 social-telegram:
 
 # Disqus

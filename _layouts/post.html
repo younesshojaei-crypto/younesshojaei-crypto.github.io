@@ -1,4 +1,3 @@
-```html
 ---
 layout: main
 ---
@@ -48,6 +47,22 @@ layout: main
       </div>
 
 
+      {% if page.podcast_id %}
+      <div class="embed-section">
+        <h3 class="embed-section-title">🎧 نسخه صوتی پادکست</h3>
+        <div class="podcast-container">
+          <iframe
+            src="https://castbox.fm/app/castbox/player/id{{ page.podcast_id }}?v=8.22.11&autoplay=0"
+            frameborder="0"
+            width="100%"
+            height="500"
+            title="پخش‌کننده پادکست NOYS"
+          ></iframe>
+        </div>
+      </div>
+      {% endif %}
+
+
       <div class="page-footer">
 
         <div class="page-share">
@@ -95,6 +110,31 @@ layout: main
       </div>
 
 
+      {% unless page.hide-newsletter %}
+      <div class="footer-subscription">
+
+        <h3>عضویت در خبرنامه NOYS</h3>
+
+        <p class="newsletter-description">
+          داستان‌ها و پرونده‌های جدید را مستقیم در ایمیل‌تان دریافت کنید.
+        </p>
+
+        <div class="substack-wrapper">
+          <iframe
+            src="https://noysdc.substack.com/embed"
+            width="480"
+            height="320"
+            style="border: 1px solid #EEE; background: white;"
+            frameborder="0"
+            scrolling="no"
+            title="عضویت در خبرنامه NOYS"
+          ></iframe>
+        </div>
+
+      </div>
+      {% endunless %}
+
+
       {% include disqus.html %}
 
     </div>
@@ -102,4 +142,3 @@ layout: main
   </div>
 
 </article>
-```

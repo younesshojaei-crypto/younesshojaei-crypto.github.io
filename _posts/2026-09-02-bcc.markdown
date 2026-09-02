@@ -4,6 +4,7 @@ title: "پرونده کانتری کلاب بغداد: تجارت سایه در 
 date: 2026-09-02
 img: baghdad-country-club-shadow-business-banner.jpg
 fig-caption: "نمایی از مقر سابق کانتری کلاب در بغداد سال ۲۰۰۵"
+podcast_id: "7361321"
 tags:
   - کسب_و_کار_سایه
   - بغداد
@@ -43,21 +44,6 @@ tags:
 
 ---
 
-### 🎧 شنیدن نسخه صوتی پادکست
-
-اگر مسیر شما طولانی است یا ترجیح می‌دهید روایت صوتی پرونده را بشنوید، نسخه صوتی را از پلیر زیر گوش کنید:
-
-<div class="podcast-container">
-  <iframe
-    src="https://castbox.fm/app/castbox/player/id7361321?v=8.22.11&autoplay=0"
-    frameborder="0"
-    width="100%"
-    height="500">
-  </iframe>
-</div>
-
----
-
 ### بخش اول: عمیق‌تر از منطقه سبز
 
 داستان کانتری کلاب بغداد فقط درباره یک بار ساده یا محل تجمع پیمانکاران نظامی خصوصی نیست.
@@ -83,29 +69,3 @@ tags:
 - 🔗 [کانال یوتیوب NOYS](https://www.youtube.com/@NOYS-DC/videos)
 - 🔗 [کانال تلگرام NOYS](https://t.me/NOYS_Official)
 
----
-
-### 📬 عضویت در خبرنامه NOYS
-
-اگر می‌خواهید داستان‌ها و پرونده‌های جدید NOYS را مستقیم دریافت کنید، در خبرنامه عضو شوید:
-
-<div class="footer-subscription">
-
-  <h3>عضویت در خبرنامه NOYS</h3>
-
-  <p class="newsletter-description">
-    داستان‌ها و پرونده‌های جدید را مستقیم در ایمیل‌تان دریافت کنید.
-  </p>
-
-  <div class="substack-wrapper">
-    <iframe
-      src="https://noysdc.substack.com/embed"
-      width="480"
-      height="320"
-      style="border: 1px solid #EEE; background: white;"
-      frameborder="0"
-      scrolling="no">
-    </iframe>
-  </div>
-
-</div>

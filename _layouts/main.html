@@ -49,6 +49,30 @@ layout: default
         </li>
         {% endif %}
 
+        {% if site.social-instagram %}
+        <li class="instagram">
+          <a
+            href="{{ site.social-instagram }}"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </li>
+        {% endif %}
+
+        {% if site.social-castbox %}
+        <li class="castbox">
+          <a
+            href="{{ site.social-castbox }}"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa fa-podcast" aria-hidden="true"></i>
+          </a>
+        </li>
+        {% endif %}
+
         {% if site.social-telegram %}
         <li class="telegram">
           <a
