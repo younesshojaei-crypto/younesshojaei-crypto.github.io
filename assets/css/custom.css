@@ -1,0 +1,103 @@
+/* =========================================================
+   NOYS - CUSTOM OVERRIDES
+   این فایل جدید است. آن را داخل assets/css/custom.css
+   در مخزن گیت‌هابت قرار بده (کنار main.css).
+   این فایل رنگ سایه‌ی عکس‌ها را به رنگ برند (زرد لوگو) تغییر می‌دهد
+   بدون این‌که لازم باشد main.css اصلی را خط‌به‌خط ویرایش کنی.
+   اگر خواستی برگردی به حالت قبل، کافیست همین فایل را حذف کنی
+   و خط لینک آن را از head.html بردار.
+   ========================================================= */
+
+:root {
+  --noys-brand-color: 255, 242, 0; /* #FFF200 - رنگ لوگو */
+}
+
+/* کارت پست‌ها در صفحه اصلی */
+.content-box > .post {
+  box-shadow: 0 1px 1px 0 rgba(var(--noys-brand-color), 0.18) !important;
+}
+
+.content-box > .post:hover {
+  box-shadow: 0 15px 45px -10px rgba(var(--noys-brand-color), 0.4) !important;
+}
+
+/* بندانگشتی پست (post-thumbnail) در main.html */
+.post-thumbnail:hover {
+  box-shadow: 0 16px 30px rgba(var(--noys-brand-color), 0.35) !important;
+}
+
+/* تصویر کاور بالای صفحه‌ی هر پست */
+.article-page .page-cover-image img:hover {
+  box-shadow: 0 20px 45px rgba(var(--noys-brand-color), 0.35) !important;
+}
+
+/* باکس اصلی متن پست */
+.article-page .wrap-content {
+  box-shadow: 0 4px 30px rgba(var(--noys-brand-color), 0.15) !important;
+}
+
+/* عکس‌های داخل متن پست هنگام هاور */
+.article-page .post-markdown-body img:hover {
+  box-shadow: 0 18px 40px rgba(var(--noys-brand-color), 0.35) !important;
+}
+
+/* لایت‌باکس بزرگ‌نمایی عکس */
+.noys-lightbox-img {
+  box-shadow: 0 25px 60px rgba(var(--noys-brand-color), 0.45) !important;
+}
+
+/* =========================================================
+   ویجت موضوعات (تگ‌ها) در سایدبار
+   مربوط به بخش جدیدی است که به main.html اضافه شده
+   ========================================================= */
+
+.sidebar-topics {
+  width: 100%;
+  margin: 30px 0;
+  padding: 22px 20px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+
+.sidebar-topics h3 {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sidebar-topics .topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-topics .topics-list li a {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #444;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sidebar-topics .topics-list li a:hover {
+  background: #fff200;
+  border-color: #fff200;
+  color: #222;
+}
+
+.sidebar-topics .topics-list li a span {
+  color: #999;
+  font-size: 0.75rem;
+  margin-right: 4px;
+}

@@ -25,7 +25,14 @@
 	<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+
+	<!-- SEO: canonical - جلوگیری از محتوای تکراری در چشم گوگل -->
+	{% if page.url %}
+	<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+	{% else %}
+	<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}/">
+	{% endif %}
+
 	<link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/favicon/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/img/favicon/apple-touch-icon.png">
 
@@ -37,4 +44,32 @@
 	<link rel="stylesheet" href="{{ site.baseurl }}/assets/fonts/font-awesome/css/font-awesome.min.css">
 	<!-- Main Stylesheet -->
 	<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+	<!-- Custom Overrides (رنگ سایه + ویجت موضوعات) -->
+	<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css">
+
+	<!-- Structured Data (JSON-LD) برای صفحه پست، برای بهبود نمایش در گوگل -->
+	{% if page.layout == 'post' %}
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Article",
+	  "headline": {{ page.title | jsonify }},
+	  "datePublished": "{{ page.date | date_to_xmlschema }}",
+	  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+	  "author": {
+	    "@type": "Person",
+	    "name": {{ site.author | jsonify }}
+	  },
+	  "publisher": {
+	    "@type": "Organization",
+	    "name": {{ site.title | jsonify }}
+	  },
+	  "description": {{ page.description | default: site.description | jsonify }},
+	  "mainEntityOfPage": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+	  {% if page.img %}
+	  ,"image": "{{ site.url }}{{ site.baseurl }}/assets/img/{{ page.img }}"
+	  {% endif %}
+	}
+	</script>
+	{% endif %}
 </head>
