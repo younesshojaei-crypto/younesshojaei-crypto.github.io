@@ -1,11 +1,6 @@
 /* =========================================================
-   NOYS - CUSTOM OVERRIDES
-   این فایل جدید است. آن را داخل assets/css/custom.css
-   در مخزن گیت‌هابت قرار بده (کنار main.css).
-   این فایل رنگ سایه‌ی عکس‌ها را به رنگ برند (زرد لوگو) تغییر می‌دهد
-   بدون این‌که لازم باشد main.css اصلی را خط‌به‌خط ویرایش کنی.
-   اگر خواستی برگردی به حالت قبل، کافیست همین فایل را حذف کنی
-   و خط لینک آن را از head.html بردار.
+   NOYS - CUSTOM OVERRIDES (نسخه ۲)
+   این فایل رو کامل جایگزین assets/css/custom.css قبلی کن
    ========================================================= */
 
 :root {
@@ -21,7 +16,7 @@
   box-shadow: 0 15px 45px -10px rgba(var(--noys-brand-color), 0.4) !important;
 }
 
-/* بندانگشتی پست (post-thumbnail) در main.html */
+/* بندانگشتی پست (post-thumbnail) */
 .post-thumbnail:hover {
   box-shadow: 0 16px 30px rgba(var(--noys-brand-color), 0.35) !important;
 }
@@ -47,13 +42,60 @@
 }
 
 /* =========================================================
+   لوگوی بالای «ارتباط با من»
+   قبلاً هیچ سایه‌ای نداشت، فقط هنگام هاور کمی بالا می‌رفت
+   ========================================================= */
+
+.contact .contact-logo img {
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(var(--noys-brand-color), 0.4) !important;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.contact .contact-logo img:hover {
+  box-shadow: 0 10px 24px rgba(var(--noys-brand-color), 0.55) !important;
+}
+
+/* =========================================================
+   ویجت پادکست در سایدبار (بالای ویجت موضوعات)
+   ========================================================= */
+
+.sidebar-podcast {
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+
+.sidebar-podcast h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sidebar-podcast-frame {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sidebar-podcast-frame iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+/* =========================================================
    ویجت موضوعات (تگ‌ها) در سایدبار
-   مربوط به بخش جدیدی است که به main.html اضافه شده
    ========================================================= */
 
 .sidebar-topics {
   width: 100%;
-  margin: 30px 0;
+  margin: 20px 0;
   padding: 22px 20px;
   box-sizing: border-box;
   border-radius: 12px;
@@ -100,4 +142,13 @@
   color: #999;
   font-size: 0.75rem;
   margin-right: 4px;
+}
+
+/* =========================================================
+   سایدبار: وقتی محتوای داخلش (بیو + پادکست + تگ + فوتر)
+   از ارتفاع صفحه بیشتر بشه، اسکرول داخلی بده به‌جای پنهان شدن
+   ========================================================= */
+
+body .sidebar {
+  overflow-y: auto;
 }

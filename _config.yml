@@ -1,6 +1,6 @@
 title: NOYS
 description: >
-  روایت و مستند درباره آدم‌ها، ماجراها و سازوکارهایی که معمولاً پشت صحنه می‌مانند.
+  روایت و مستند درباره آدم‌ها، ماجراها و سازوکارهایی که معمولاً پشت صحنه می‌مانند
 
 permalink: /:title/
 baseurl: ""
@@ -10,7 +10,7 @@ site-twitter:
 # Author Settings
 author: NOYS
 author-img: avatar.png
-about-author: روایت‌هایی درباره پرونده‌های واقعی، کسب‌وکارهای سایه، بازارهای سیاه و داستان‌هایی که ارزش دوباره شنیدن دارند.
+about-author: "روایت‌هایی درباره پرونده‌های واقعی،<br>کسب‌وکارهای سایه، بازارهای سیاه<br>و داستان‌هایی که ارزش دوباره شنیدن دارند."
 
 social-twitter:
 social-facebook:
@@ -22,7 +22,8 @@ social-email: "noysdc.media@gmail.com"
 social-youtube: "https://www.youtube.com/@NOYS-DC/videos"
 social-instagram: "https://instagram.com/noysdc"
 social-castbox: "https://castbox.fm/vh/7361321"
-social-telegram:
+podcast-channel-id: "7361321"
+social-telegram:"https://t.me/NOYSDC"
 
 # Disqus
 discus-identifier:

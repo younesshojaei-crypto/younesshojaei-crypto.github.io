@@ -28,6 +28,23 @@ layout: default
   </header>
 
 
+  {% if site.podcast-channel-id %}
+  <section class="sidebar-podcast">
+    <h3>پادکست NOYS</h3>
+    <div class="sidebar-podcast-frame">
+      <iframe
+        src="https://castbox.fm/app/castbox/player/id{{ site.podcast-channel-id }}?v=8.22.11&autoplay=0"
+        frameborder="0"
+        width="100%"
+        height="150"
+        title="پخش‌کننده پادکست NOYS"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+  {% endif %}
+
+
   {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
   {% assign tag_words = site_tags | split:',' | sort %}
 
@@ -175,17 +192,6 @@ layout: default
 
 .content-box {
   width: 100%;
-}
-
-
-/* =========================================================
-   POSTS
-   ========================================================= */
-
-.post {
-  width: 100%;
-  margin: 0 0 35px 0;
-  overflow: hidden;
 }
 
 
