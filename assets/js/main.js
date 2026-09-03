@@ -51,12 +51,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-/* سایه برای باکس‌های طبقه‌بندی توی سایدبار */
-.sidebar-topics .topics-list li a {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+/* =========================================================
+   NOYS - اندازه‌گیری ارتفاع واقعی بخش بالایی سایدبار (عکس+بیو)
+   تا بخش پایینی (موضوعات) هیچ‌وقت روش نیفته.
+   ========================================================= */
+
+function noysSyncSidebarHeight() {
+  var top = document.querySelector('.sidebar-top');
+  if (!top) return;
+  var h = top.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--noys-sidebar-top-h', h + 'px');
 }
 
-.sidebar-topics .topics-list li a:hover {
-  box-shadow: 0 6px 16px rgba(255, 242, 0, 0.45);
-}
-
+window.addEventListener('load', noysSyncSidebarHeight);
+window.addEventListener('resize', noysSyncSidebarHeight);

@@ -39,23 +39,6 @@ layout: default
 
 <aside class="sidebar sidebar-bottom">
 
-  {% if site.podcast-channel-id %}
-  <section class="sidebar-podcast">
-    <h3>پادکست NOYS</h3>
-    <div class="sidebar-podcast-frame">
-      <iframe
-        src="https://castbox.fm/app/castbox/player/id{{ site.podcast-channel-id }}?v=8.22.11&autoplay=0"
-        frameborder="0"
-        width="100%"
-        height="150"
-        title="پخش‌کننده پادکست NOYS"
-        loading="lazy"
-      ></iframe>
-    </div>
-  </section>
-  {% endif %}
-
-
   {% capture site_categories %}{% for cat in site.categories %}{{ cat | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
   {% assign category_words = site_categories | split:',' | sort %}
 
@@ -80,16 +63,16 @@ layout: default
 
     <section class="contact">
 
+      <h3 class="contact-title">
+        ارتباط با من
+      </h3>
+
       <div class="contact-logo">
         <img
           src="{{ site.baseurl }}/assets/img/favicon/noys-logo.png"
           alt="NOYS"
         >
       </div>
-
-      <h3 class="contact-title">
-        ارتباط با من
-      </h3>
 
       <ul>
 

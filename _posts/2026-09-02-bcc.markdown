@@ -5,6 +5,10 @@ date: 2026-09-02
 img: baghdad-country-club-shadow-business-banner.jpg
 fig-caption: نمایی از مقر سابق کانتری کلاب در بغداد سال ۲۰۰۵
 podcast_id: "7361321"
+categories:
+  - نظامی
+  - قاچاق
+     -  بیزینس های ممنوعه
 tags:
   - کسب_و_کار_سایه
   - بغداد
