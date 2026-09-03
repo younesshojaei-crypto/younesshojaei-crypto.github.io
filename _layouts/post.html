@@ -94,13 +94,13 @@ layout: main
 
         <div class="page-tag">
 
-          {% for tag in page.tags %}
+          {% for cat in page.categories %}
 
           <a
-            href="{{ site.baseurl }}/tags#{{ tag }}"
+            href="{{ site.baseurl }}/categories#{{ cat }}"
             class="tag"
           >
-            &#35; {{ tag }}
+            &#35; {{ cat }}
           </a>
 
           {% endfor %}

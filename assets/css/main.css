@@ -1506,3 +1506,17 @@ body.noys-lightbox-active {
     font-size: 13px;
   }
 }
+
+/* NOYS: اندازه‌گیری ارتفاع واقعی بخش بالایی سایدبار (عکس+بیو)
+   تا بخش پایینی (پادکست+موضوعات) هیچ‌وقت روش نیفته.
+   این کد رو به انتهای assets/js/main.js اضافه کن. */
+
+function noysSyncSidebarHeight() {
+  var top = document.querySelector('.sidebar-top');
+  if (!top) return;
+  var h = top.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--noys-sidebar-top-h', h + 'px');
+}
+
+window.addEventListener('load', noysSyncSidebarHeight);
+window.addEventListener('resize', noysSyncSidebarHeight);

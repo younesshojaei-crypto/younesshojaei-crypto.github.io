@@ -1,0 +1,11 @@
+# این فایل رو توی مسیر _data/podcasts.yml توی ریپازیتوری بذار.
+# فقط برای اپیزودهایی لازمه که پست جدا توی وبلاگ ندارن.
+# اگه اپیزود پست وبلاگی داره (مثل الان)، نیازی به اضافه کردنش این‌جا نیست،
+# چون از خود پست به‌صورت خودکار توی صفحه پادکست ساخته می‌شه.
+
+- title: "اسم اپیزود دستی نمونه"
+  date: "2026/08/20"
+  img: "cover-episode-namuneh.jpg"   # عکس باید توی assets/img/ باشه
+  embed: >
+    <iframe src="https://castbox.fm/app/castbox/player/idXXXXXXX?v=8.22.11&autoplay=0"
+      frameborder="0" width="100%" height="180" loading="lazy" title="اسم اپیزود"></iframe>
