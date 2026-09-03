@@ -68,6 +68,14 @@
   border-radius: 12px;
   background: #fafafa;
   border: 1px solid #eee;
+
+  box-shadow: 0 6px 20px rgba(var(--noys-brand-color), 0.18);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-podcast:hover {
+  box-shadow: 0 12px 30px rgba(var(--noys-brand-color), 0.3);
+  transform: translateY(-2px);
 }
 
 .sidebar-podcast h3 {
@@ -81,6 +89,17 @@
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* روی دسکتاپ فضای کمی بیشتر و برجستگی بیشتری به باکس پادکست می‌دهیم
+   چون سایدبار باریک‌تره و ویجت راحت‌تر کوچک به‌نظر می‌رسه */
+@media (min-width: 769px) {
+  .sidebar-podcast {
+    padding: 18px 16px 20px;
+    border-color: #e2e2e2;
+  }
 }
 
 .sidebar-podcast-frame iframe {

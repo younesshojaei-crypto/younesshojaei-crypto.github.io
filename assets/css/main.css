@@ -167,17 +167,13 @@ img {
 body .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   position: fixed;
 
-  top: 0;
   right: 0;
   left: auto;
-  bottom: 0;
 
   width: 260px;
-  height: 100%;
 
   padding: 20px 15px;
 
@@ -187,6 +183,19 @@ body .sidebar {
   border-right: none;
 
   z-index: 100;
+}
+
+/* بخش بالایی سایدبار (آواتار/بیو): همیشه بالای صفحه ثابت می‌ماند */
+body .sidebar-top {
+  top: 0;
+}
+
+/* بخش پایینی سایدبار (پادکست + تگ‌ها + فوتر): همیشه پایین صفحه ثابت می‌ماند */
+body .sidebar-bottom {
+  bottom: 0;
+
+  max-height: 82vh;
+  overflow-y: auto;
 }
 
 
@@ -1232,6 +1241,8 @@ body.noys-lightbox-active {
     width: 100% !important;
 
     height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
 
     top: auto;
 
@@ -1240,7 +1251,9 @@ body.noys-lightbox-active {
     bottom: auto;
 
     border-left: none !important;
+  }
 
+  body .sidebar-top {
     border-bottom: 1px solid #eef2f8 !important;
   }
 

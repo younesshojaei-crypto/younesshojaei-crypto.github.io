@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<aside class="sidebar">
+<aside class="sidebar sidebar-top">
 
   <header>
     <div class="about">
@@ -27,6 +27,17 @@ layout: default
     </div>
   </header>
 
+</aside>
+
+
+<div class="content-box clearfix">
+
+  {{ content }}
+
+</div>
+
+
+<aside class="sidebar sidebar-bottom">
 
   {% if site.podcast-channel-id %}
   <section class="sidebar-podcast">
@@ -175,13 +186,6 @@ layout: default
   </footer>
 
 </aside>
-
-
-<div class="content-box clearfix">
-
-  {{ content }}
-
-</div>
 
 
 <style>
