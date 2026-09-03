@@ -1,4 +1,19 @@
 <head>
+	<script>
+	  /* NOYS: قبل از رندر صفحه، حالت روشن/تاریک ذخیره‌شده رو اعمال کن
+	     تا صفحه یک لحظه با تم اشتباه چشمک نزنه */
+	  (function () {
+	    try {
+	      var saved = localStorage.getItem('noys-theme');
+	      if (saved === 'dark' || saved === 'light') {
+	        document.documentElement.setAttribute('data-theme', saved);
+	      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	        document.documentElement.setAttribute('data-theme', 'dark');
+	      }
+	    } catch (e) {}
+	  })();
+	</script>
+
 	<meta charset="utf-8">
 	<title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
 

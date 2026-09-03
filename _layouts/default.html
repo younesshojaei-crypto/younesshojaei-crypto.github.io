@@ -4,6 +4,17 @@
 
 <body>
 
+  <nav class="noys-topnav">
+    <div class="noys-topnav-links">
+      <a href="{{ site.baseurl }}/" class="{% if page.layout == 'main' and page.title == nil %}is-active{% endif %}">متن‌ها</a>
+      <a href="{{ site.baseurl }}/podcast/" class="{% if page.url == '/podcast/' %}is-active{% endif %}">پادکست</a>
+    </div>
+    <button type="button" class="noys-theme-toggle" aria-label="تغییر حالت روشن/تاریک">
+      <i class="fa fa-sun-o noys-icon-light" aria-hidden="true"></i>
+      <i class="fa fa-moon-o noys-icon-dark" aria-hidden="true"></i>
+    </button>
+  </nav>
+
   <div class="wrapper">
     {{ content }}
   </div>

@@ -65,3 +65,24 @@ function noysSyncSidebarHeight() {
 
 window.addEventListener('load', noysSyncSidebarHeight);
 window.addEventListener('resize', noysSyncSidebarHeight);
+
+/* =========================================================
+   NOYS - سوییچ حالت روشن/تاریک
+   ========================================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+  var toggleBtn = document.querySelector('.noys-theme-toggle');
+  if (!toggleBtn) return;
+
+  toggleBtn.addEventListener('click', function () {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+
+    html.setAttribute('data-theme', next);
+
+    try {
+      localStorage.setItem('noys-theme', next);
+    } catch (e) {}
+  });
+});
