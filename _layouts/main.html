@@ -34,20 +34,31 @@ layout: default
 
 <aside class="sidebar sidebar-bottom">
 
-  {% capture site_categories %}{% for cat in site.categories %}{{ cat | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-  {% assign category_words = site_categories | split:',' | sort %}
+  {% comment %}
+    نکته‌ی فنی: از جکیل ۳ به بعد، وقتی پست‌ها رو داخل زیرپوشه‌های
+    _posts (مثل magazine/ یا podcast/) می‌ذاری، خودِ جکیل اسم اون
+    پوشه رو هم به‌عنوان یک «دسته» (category) به پست اضافه می‌کنه.
+    این خط، این دو دسته‌ی خودکار رو از لیست موضوعاتِ سایدبار حذف
+    می‌کنه تا فقط موضوعات واقعی (نظامی، قاچاق و ...) نشون داده بشن.
+  {% endcomment %}
+  {% assign noys_folder_categories = "magazine,podcast" | split: "," %}
+
+  {% capture site_categories %}{% for cat in site.categories %}{% unless noys_folder_categories contains cat[0] %},{{ cat | first }}{% endunless %}{% endfor %}{% endcapture %}
+  {% assign category_words = site_categories | split:',' | uniq | sort %}
 
   {% if category_words.size > 0 %}
   <section class="sidebar-topics">
     <h3>موضوعات</h3>
     <ul class="topics-list">
       {% for this_word in category_words %}
+      {% if this_word != "" %}
       <li>
         <a href="{{ site.baseurl }}/categories/#{{ this_word | cgi_escape }}">
           {{ this_word }}
           <span>({{ site.categories[this_word].size }})</span>
         </a>
       </li>
+      {% endif %}
       {% endfor %}
     </ul>
   </section>
@@ -110,7 +121,7 @@ layout: default
         {% if site.social-telegram %}
         <li class="telegram">
           <a
-            href="https://t.me/{{ site.social-telegram }}"
+            href="{{ site.social-telegram }}"
             target="_blank"
             rel="noopener"
           >
