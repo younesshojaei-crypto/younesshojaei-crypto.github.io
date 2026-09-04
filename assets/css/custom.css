@@ -52,8 +52,130 @@
   transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.contact .contact-logo img:hover {
-  box-shadow: 0 10px 24px rgba(var(--noys-brand-color), 0.55) !important;
+/* =========================================================
+   NOYS - آواتار/لوگوی بالای سایدبار: سایه‌ی دائمی + شناور شدن
+   ========================================================= */
+
+.about .cover-author-image {
+  box-shadow: 0 10px 26px rgba(20, 22, 30, 0.18);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  /* شناور شدن ملایم و پیوسته، حتی بدون هاور */
+  animation: noysAvatarFloat 3.4s ease-in-out infinite;
+}
+
+.about .cover-author-image:hover {
+  box-shadow: 0 16px 34px rgba(255, 242, 0, 0.45);
+}
+
+.about img {
+  object-fit: contain !important;
+}
+
+@keyframes noysAvatarFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about .cover-author-image {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   NOYS - آیکون‌های شبکه‌ی اجتماعی (ارتباط با من): دکمه‌ی دایره‌ای
+   با سایه روی هاور
+   ========================================================= */
+
+.contact ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  background: #fafafa;
+  border: 1px solid #eee;
+
+  color: #444;
+  font-size: 15px;
+
+  transition: all 0.25s ease;
+}
+
+.contact ul li a:hover {
+  background: #fff200;
+  border-color: #fff200;
+  color: #222;
+
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(255, 242, 0, 0.5);
+}
+
+.contact ul li.donate a:hover {
+  background: #ff5470;
+  border-color: #ff5470;
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(255, 84, 112, 0.45);
+}
+
+.donate-btn {
+  display: block;
+  margin: 14px auto 0;
+  padding: 10px 18px;
+
+  width: fit-content;
+
+  border-radius: 999px;
+  background: #ff5470;
+  color: #fff !important;
+
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+
+  box-shadow: 0 8px 20px rgba(255, 84, 112, 0.35);
+  transition: all 0.25s ease;
+}
+
+.donate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(255, 84, 112, 0.5);
+}
+
+html[data-theme="dark"] .contact ul li a {
+  background: #22252b !important;
+  border-color: #3a3d43 !important;
+  color: #eee !important;
+}
+
+/* =========================================================
+   یادداشت هشدار «آیدی اختصاصی اپیزود ثبت نشده» - هم توی صفحه‌ی
+   پادکست و هم توی خودِ صفحه‌ی هر مقاله استفاده می‌شه
+   ========================================================= */
+
+.podcast-player-note {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  background: #fff8e1;
+  border: 1px solid #ffe58a;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #7a5b00;
+  text-align: right;
+}
+
+.podcast-player-note code {
+  direction: ltr;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0 4px;
+  border-radius: 4px;
 }
 
 /* =========================================================
@@ -68,6 +190,16 @@
   border-radius: 12px;
   background: #fafafa;
   border: 1px solid #eee;
+
+  /* سایه‌ی همیشگی روی کل باکس طبقه‌بندی + کمی زوم موقع هاور،
+     دقیقاً مثل بقیه‌ی باکس‌های سایت (کارت پادکست و ...) */
+  box-shadow: 0 8px 22px rgba(20, 22, 30, 0.08);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.sidebar-topics:hover {
+  transform: scale(1.02);
+  box-shadow: 0 14px 32px rgba(20, 22, 30, 0.14);
 }
 
 .sidebar-topics h3 {
@@ -117,115 +249,173 @@
 }
 
 /* =========================================================
-   سایدبار: وقتی محتوای داخلش (بیو + موضوعات + فوتر)
-   از ارتفاع صفحه بیشتر بشه، اسکرول داخلی بده به‌جای پنهان شدن
+   NOYS - رفع باگ «سایدبار کوتاه شده / تا بالا نمی‌رسه»
+
+   قبلاً sidebar-top و sidebar-bottom دو <aside> کاملاً جدا و
+   مستقل با position:fixed بودن، و با یک اسکریپت جاوااسکریپت
+   ارتفاعِ sidebar-top اندازه‌گیری می‌شد تا sidebar-bottom دقیقاً
+   از همون‌جا شروع بشه. این روش شکننده بود: اگه فونت وب یک لحظه
+   دیرتر لود می‌شد یا محتوا تغییر می‌کرد، ارتفاع اندازه‌گیری‌شده
+   قدیمی می‌موند و بین دو بخش یا فاصله‌ی خالی می‌افتاد یا روی هم
+   می‌رفتن (یعنی همون حسی که «تا بالا نیست» می‌داد).
+
+   راه‌حل: هر دو بخش رو داخل یک کادر واحد (.sidebar-fixed) با
+   position:fixed و height:100vh می‌ذاریم و با flexbox می‌چینیم.
+   بخش بالا (بیو) اندازه‌ی طبیعی خودش رو می‌گیره، بخش پایین
+   (موضوعات + تماس با ما) باقی‌مونده‌ی فضا رو پر می‌کنه و اگه
+   محتواش زیاد شد، خودش داخل خودش اسکرول می‌خوره. دیگه هیچ
+   جاوااسکریپتی برای این کار لازم نیست.
    ========================================================= */
 
-body .sidebar {
+.sidebar-fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: auto;
+  bottom: 0;
+
+  width: 260px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #ffffff;
+  border-left: 1px solid #eef2f8;
+
+  z-index: 100;
+}
+
+.sidebar-fixed .sidebar {
+  position: static !important;
+  width: 100% !important;
+  border-left: none !important;
+}
+
+.sidebar-fixed .sidebar-top {
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.sidebar-fixed .sidebar-bottom {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none !important;
   overflow-y: auto;
 }
 
-/* =========================================================
-   NOYS - رفع باگ روی‌هم‌افتادن سایدبار (نسخه ۲ - اصلاح‌شده):
-   قبلاً از "height" استفاده کرده بودم که کادر رو مجبور می‌کرد
-   کل فاصله‌ی باقی‌مونده تا ته صفحه رو پر کنه، و چون محتوا
-   (موضوعات + تماس با ما) کوتاه‌تر از این فاصله بود، محتوا
-   می‌چسبید بالای کادر و بین محتوا و ته صفحه یه فاصله‌ی خالی
-   می‌افتاد. یعنی «تماس با ما» به‌جای پایین، می‌رفت بالا.
-
-   با "max-height" این مشکل حل می‌شه: محتوا به اندازه‌ی خودش
-   جا می‌گیره (و طبیعتاً می‌چسبد به ته کادر، چون از پایین شروع
-   نمی‌شه بلکه از بالا می‌چینه، ولی چون معمولاً کوتاهه، توی
-   عمل درست زیر بیوی بالایی می‌شینه). اگه یک روز محتوا زیاد شد
-   و از فضای موجود بیشتر شد، خودش داخل خودش اسکرول می‌خوره
-   (overflow-y: auto) بدون اینکه روی بیوی بالایی بیفته.
-   ========================================================= */
-
-body .sidebar-bottom {
-  bottom: auto !important;
-  top: var(--noys-sidebar-top-h, 260px) !important;
-  height: auto !important;
-  max-height: calc(100vh - var(--noys-sidebar-top-h, 260px)) !important;
-  overflow-y: auto !important;
-}
-
 @media only screen and (max-width: 768px) {
-  /* توی موبایل سایدبار اصلاً fixed نیست، پس این محدودیت‌ها اونجا اثری ندارن */
-  body .sidebar-bottom {
-    top: auto !important;
-    max-height: none !important;
+  /* توی موبایل سایدبار اصلاً fixed نیست، یک ستون معمولی می‌شه */
+  .sidebar-fixed {
+    position: relative !important;
+    height: auto !important;
+    width: 100% !important;
+    border-left: none !important;
+  }
+
+  .sidebar-fixed .sidebar-bottom {
+    overflow-y: visible !important;
   }
 }
 
 
 /* =========================================================
-   NOYS - منوی بالای صفحه (متن‌ها / پادکست + دکمه تم)
+   NOYS - نوار شناور بالای صفحه (مجله / پادکست / جستجو / تم)
+   بیضی‌شکل، شناور، با سایه؛ همیشه بالای صفحه و وسط‌چین می‌مونه،
+   چه موقع اسکرول و چه موقع بالای صفحه (مثل channelbpodcast.com)
    ========================================================= */
 
-.noys-topnav {
-  position: sticky;
-  top: 0;
-  z-index: 200;
+body {
+  /* فاصله‌ی امن بالای صفحه، تا محتوا زیر نوار شناور قایم نشه */
+  padding-top: 78px;
+}
 
+.noys-floatnav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+
+  width: max-content;
+  max-width: calc(100vw - 24px);
+}
+
+.noys-floatnav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
 
-  padding: 10px 20px;
+  padding: 8px 10px;
 
   background: #ffffff;
-  border-bottom: 1px solid #eef2f8;
+  border-radius: 999px;
+
+  box-shadow: 0 10px 35px rgba(20, 22, 30, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.noys-topnav-links {
-  display: flex;
-  gap: 10px;
+.noys-floatnav-inner:hover {
+  box-shadow: 0 14px 42px rgba(20, 22, 30, 0.22);
 }
 
-.noys-topnav-links a {
-  padding: 6px 16px;
-  border-radius: 20px;
-
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #444;
-
-  border: 1px solid #ddd;
-  transition: all 0.2s ease;
-}
-
-.noys-topnav-links a:hover {
-  background: #f5f5f5;
-}
-
-.noys-topnav-links a.is-active {
-  background: #fff200;
-  border-color: #fff200;
-  color: #222;
-}
-
+.noys-nav-search-btn,
 .noys-theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
 
   border-radius: 50%;
-  border: 1px solid #ddd;
-  background: #fff;
+  border: 1px solid #eee;
+  background: #fafafa;
   cursor: pointer;
 
-  font-size: 15px;
+  font-size: 14px;
   color: #444;
 
   transition: all 0.2s ease;
 }
 
+.noys-nav-search-btn:hover,
 .noys-theme-toggle:hover {
+  background: #fff200;
+  border-color: #fff200;
+  color: #222;
+  box-shadow: 0 6px 16px rgba(255, 242, 0, 0.45);
+}
+
+.noys-nav-links {
+  display: flex;
+  gap: 6px;
+}
+
+.noys-nav-links a {
+  padding: 8px 18px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #444;
+  white-space: nowrap;
+
+  transition: all 0.2s ease;
+}
+
+.noys-nav-links a:hover {
   background: #f5f5f5;
+}
+
+.noys-nav-links a.is-active {
+  background: #fff200;
+  color: #222;
+  box-shadow: 0 6px 16px rgba(255, 242, 0, 0.4);
 }
 
 /* پیش‌فرض (حالت روشن): فقط آیکون خورشید دیده می‌شه */
@@ -233,14 +423,131 @@ body .sidebar-bottom {
   display: none;
 }
 
+/* =========================================================
+   پنل جستجو: زیر همون باکس شناور باز می‌شه
+   ========================================================= */
+
+.noys-search-panel {
+  margin-top: 10px;
+  padding: 14px;
+
+  background: #ffffff;
+  border-radius: 22px;
+
+  box-shadow: 0 10px 35px rgba(20, 22, 30, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  width: min(420px, calc(100vw - 24px));
+}
+
+.noys-search-panel[hidden] {
+  display: none;
+}
+
+.noys-search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 999px;
+}
+
+.noys-search-input-wrap i {
+  color: #999;
+  font-size: 13px;
+}
+
+#noysSearchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #222;
+  text-align: right;
+  direction: rtl;
+}
+
+.noys-search-results {
+  max-height: 320px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.noys-search-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px;
+  border-radius: 12px;
+
+  text-decoration: none;
+  color: inherit;
+
+  transition: background 0.2s ease;
+}
+
+.noys-search-result:hover {
+  background: #fafafa;
+}
+
+.noys-search-result img {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.noys-search-result-text {
+  overflow: hidden;
+}
+
+.noys-search-result-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.noys-search-result-meta {
+  font-size: 11.5px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.noys-search-empty {
+  padding: 14px 8px;
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+}
+
 @media (max-width: 768px) {
-  .noys-topnav {
-    padding: 8px 14px;
+  body {
+    padding-top: 70px;
   }
 
-  .noys-topnav-links a {
-    padding: 5px 12px;
+  .noys-floatnav-inner {
+    padding: 6px 8px;
+  }
+
+  .noys-nav-links a {
+    padding: 7px 12px;
     font-size: 13px;
+  }
+
+  .noys-nav-search-btn,
+  .noys-theme-toggle {
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -255,23 +562,45 @@ html[data-theme="dark"] body {
   color: #dcdcdc !important;
 }
 
-html[data-theme="dark"] .noys-topnav {
+html[data-theme="dark"] .noys-floatnav-inner,
+html[data-theme="dark"] .noys-search-panel {
   background: #1c1f24 !important;
   border-color: #2a2d33 !important;
 }
 
-html[data-theme="dark"] .noys-topnav-links a {
+html[data-theme="dark"] .noys-nav-links a {
   color: #ccc !important;
-  border-color: #3a3d43 !important;
 }
 
-html[data-theme="dark"] .noys-topnav-links a:hover {
+html[data-theme="dark"] .noys-nav-links a:hover {
   background: #2a2d33 !important;
 }
 
+html[data-theme="dark"] .noys-nav-links a.is-active {
+  color: #222 !important;
+}
+
+html[data-theme="dark"] .noys-nav-search-btn,
 html[data-theme="dark"] .noys-theme-toggle {
-  background: #1c1f24 !important;
+  background: #22252b !important;
   border-color: #3a3d43 !important;
+  color: #eee !important;
+}
+
+html[data-theme="dark"] .noys-search-input-wrap {
+  background: #22252b !important;
+  border-color: #3a3d43 !important;
+}
+
+html[data-theme="dark"] #noysSearchInput {
+  color: #eee !important;
+}
+
+html[data-theme="dark"] .noys-search-result:hover {
+  background: #22252b !important;
+}
+
+html[data-theme="dark"] .noys-search-result-title {
   color: #eee !important;
 }
 
@@ -283,6 +612,11 @@ html[data-theme="dark"] .noys-icon-light {
 
 html[data-theme="dark"] .noys-icon-dark {
   display: inline-block;
+}
+
+html[data-theme="dark"] .sidebar-fixed {
+  background-color: #1c1f24 !important;
+  border-color: #2a2d33 !important;
 }
 
 html[data-theme="dark"] body .sidebar {

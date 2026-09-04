@@ -164,14 +164,12 @@ img {
    SIDEBAR
    ========================================================= */
 
+/* توجه: موقعیت fixed و ارتفاع کامل صفحه توسط کادر بیرونی
+   .sidebar-fixed کنترل می‌شه (در assets/css/custom.css).
+   این بخش فقط ظاهر داخلی (پدینگ/چیدمان) رو مشخص می‌کنه. */
 body .sidebar {
   display: flex;
   flex-direction: column;
-
-  position: fixed;
-
-  right: 0;
-  left: auto;
 
   width: 260px;
 
@@ -179,23 +177,7 @@ body .sidebar {
 
   background-color: #ffffff;
 
-  border-left: 1px solid #eef2f8;
   border-right: none;
-
-  z-index: 100;
-}
-
-/* بخش بالایی سایدبار (آواتار/بیو): همیشه بالای صفحه ثابت می‌ماند */
-body .sidebar-top {
-  top: 0;
-}
-
-/* بخش پایینی سایدبار (پادکست + تگ‌ها + فوتر): همیشه پایین صفحه ثابت می‌ماند */
-body .sidebar-bottom {
-  bottom: 0;
-
-  max-height: 82vh;
-  overflow-y: auto;
 }
 
 
@@ -1506,17 +1488,3 @@ body.noys-lightbox-active {
     font-size: 13px;
   }
 }
-
-/* NOYS: اندازه‌گیری ارتفاع واقعی بخش بالایی سایدبار (عکس+بیو)
-   تا بخش پایینی (پادکست+موضوعات) هیچ‌وقت روش نیفته.
-   این کد رو به انتهای assets/js/main.js اضافه کن. */
-
-function noysSyncSidebarHeight() {
-  var top = document.querySelector('.sidebar-top');
-  if (!top) return;
-  var h = top.getBoundingClientRect().height;
-  document.documentElement.style.setProperty('--noys-sidebar-top-h', h + 'px');
-}
-
-window.addEventListener('load', noysSyncSidebarHeight);
-window.addEventListener('resize', noysSyncSidebarHeight);

@@ -52,19 +52,141 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* =========================================================
-   NOYS - اندازه‌گیری ارتفاع واقعی بخش بالایی سایدبار (عکس+بیو)
-   تا بخش پایینی (موضوعات) هیچ‌وقت روش نیفته.
+   NOYS - جستجوی زنده (توی نوار شناور بالا)
+   با یک بار fetch کردن search-index.json (که جکیل خودش از
+   روی تمام پست‌ها می‌سازه)، روی عنوان/دسته/تگ فیلتر می‌کنه.
    ========================================================= */
 
-function noysSyncSidebarHeight() {
-  var top = document.querySelector('.sidebar-top');
-  if (!top) return;
-  var h = top.getBoundingClientRect().height;
-  document.documentElement.style.setProperty('--noys-sidebar-top-h', h + 'px');
-}
+document.addEventListener('DOMContentLoaded', function () {
+  var toggleBtn = document.getElementById('noysSearchToggle');
+  var panel = document.getElementById('noysSearchPanel');
+  var input = document.getElementById('noysSearchInput');
+  var resultsBox = document.getElementById('noysSearchResults');
 
-window.addEventListener('load', noysSyncSidebarHeight);
-window.addEventListener('resize', noysSyncSidebarHeight);
+  if (!toggleBtn || !panel || !input || !resultsBox) return;
+
+  var searchData = null;
+  var searchDataPromise = null;
+
+  function loadSearchData() {
+    if (searchDataPromise) return searchDataPromise;
+
+    searchDataPromise = fetch(
+      (window.NOYS_BASEURL || '') + '/search-index.json'
+    )
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        searchData = data;
+        return data;
+      })
+      .catch(function () {
+        searchData = [];
+        return [];
+      });
+
+    return searchDataPromise;
+  }
+
+  function renderResults(items, query) {
+    if (!items.length) {
+      resultsBox.innerHTML =
+        '<p class="noys-search-empty">چیزی برای «' +
+        query +
+        '» پیدا نشد.</p>';
+      return;
+    }
+
+    resultsBox.innerHTML = items
+      .slice(0, 8)
+      .map(function (item) {
+        return (
+          '<a class="noys-search-result" href="' +
+          item.url +
+          '">' +
+          '<img src="' +
+          item.img +
+          '" alt="" loading="lazy">' +
+          '<span class="noys-search-result-text">' +
+          '<span class="noys-search-result-title">' +
+          item.title +
+          '</span>' +
+          '<span class="noys-search-result-meta">' +
+          (item.isPodcast ? 'پادکست' : 'مجله') +
+          ' · ' +
+          item.date +
+          '</span>' +
+          '</span>' +
+          '</a>'
+        );
+      })
+      .join('');
+  }
+
+  function runSearch(query) {
+    query = (query || '').trim();
+
+    if (!query) {
+      resultsBox.innerHTML = '';
+      return;
+    }
+
+    loadSearchData().then(function (data) {
+      var q = query.toLowerCase();
+
+      var filtered = data.filter(function (item) {
+        var haystack = [
+          item.title,
+          item.excerpt,
+          (item.categories || []).join(' '),
+          (item.tags || []).join(' ')
+        ]
+          .join(' ')
+          .toLowerCase();
+
+        return haystack.indexOf(q) !== -1;
+      });
+
+      renderResults(filtered, query);
+    });
+  }
+
+  function openSearch() {
+    panel.hidden = false;
+    loadSearchData();
+    window.setTimeout(function () {
+      input.focus();
+    }, 50);
+  }
+
+  function closeSearch() {
+    panel.hidden = true;
+  }
+
+  toggleBtn.addEventListener('click', function () {
+    if (panel.hidden) {
+      openSearch();
+    } else {
+      closeSearch();
+    }
+  });
+
+  input.addEventListener('input', function () {
+    runSearch(input.value);
+  });
+
+  document.addEventListener('click', function (e) {
+    var nav = document.getElementById('noysFloatNav');
+    if (nav && !nav.contains(e.target)) {
+      closeSearch();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeSearch();
+    }
+  });
+});
 
 /* =========================================================
    NOYS - سوییچ حالت روشن/تاریک

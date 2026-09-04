@@ -4,15 +4,41 @@
 
 <body>
 
-  <nav class="noys-topnav">
-    <div class="noys-topnav-links">
-      <a href="{{ site.baseurl }}/" class="{% if page.layout == 'main' and page.title == nil %}is-active{% endif %}">متن‌ها</a>
-      <a href="{{ site.baseurl }}/podcast/" class="{% if page.url == '/podcast/' %}is-active{% endif %}">پادکست</a>
+  <script>window.NOYS_BASEURL = "{{ site.baseurl }}";</script>
+
+  <nav class="noys-floatnav" id="noysFloatNav">
+
+    <div class="noys-floatnav-inner">
+
+      <button type="button" class="noys-nav-search-btn" id="noysSearchToggle" aria-label="جستجو">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+
+      <div class="noys-nav-links">
+        <a href="{{ site.baseurl }}/" class="{% if page.layout == 'main' and page.title == nil %}is-active{% endif %}">مجله</a>
+        <a href="{{ site.baseurl }}/podcast/" class="{% if page.url == '/podcast/' %}is-active{% endif %}">پادکست</a>
+      </div>
+
+      <button type="button" class="noys-theme-toggle" aria-label="تغییر حالت روشن/تاریک">
+        <i class="fa fa-sun-o noys-icon-light" aria-hidden="true"></i>
+        <i class="fa fa-moon-o noys-icon-dark" aria-hidden="true"></i>
+      </button>
+
     </div>
-    <button type="button" class="noys-theme-toggle" aria-label="تغییر حالت روشن/تاریک">
-      <i class="fa fa-sun-o noys-icon-light" aria-hidden="true"></i>
-      <i class="fa fa-moon-o noys-icon-dark" aria-hidden="true"></i>
-    </button>
+
+    <div class="noys-search-panel" id="noysSearchPanel" hidden>
+      <div class="noys-search-input-wrap">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input
+          type="text"
+          id="noysSearchInput"
+          placeholder="جستجو در مجله و پادکست..."
+          autocomplete="off"
+        >
+      </div>
+      <div class="noys-search-results" id="noysSearchResults"></div>
+    </div>
+
   </nav>
 
   <div class="wrapper">

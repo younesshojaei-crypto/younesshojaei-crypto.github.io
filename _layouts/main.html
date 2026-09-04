@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<div class="sidebar-fixed">
+
 <aside class="sidebar sidebar-top">
 
   <header>
@@ -28,13 +30,6 @@ layout: default
   </header>
 
 </aside>
-
-
-<div class="content-box clearfix">
-
-  {{ content }}
-
-</div>
 
 
 <aside class="sidebar sidebar-bottom">
@@ -69,7 +64,7 @@ layout: default
 
       <div class="contact-logo">
         <img
-          src="{{ site.baseurl }}/assets/img/favicon/noys-logo.png"
+          src="{{ site.baseurl }}/assets/img/template/noys-logo-wordmark.png"
           alt="NOYS"
         >
       </div>
@@ -156,7 +151,31 @@ layout: default
         </li>
         {% endif %}
 
+        {% if site.social-donate %}
+        <li class="donate">
+          <a
+            href="{{ site.social-donate }}"
+            target="_blank"
+            rel="noopener"
+            title="حمایت مالی از NOYS"
+          >
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          </a>
+        </li>
+        {% endif %}
+
       </ul>
+
+      {% if site.social-donate %}
+      <a
+        class="donate-btn"
+        href="{{ site.social-donate }}"
+        target="_blank"
+        rel="noopener"
+      >
+        ❤️ حمایت مالی از NOYS
+      </a>
+      {% endif %}
 
     </section>
 
@@ -169,6 +188,16 @@ layout: default
   </footer>
 
 </aside>
+
+</div>
+<!-- /.sidebar-fixed -->
+
+
+<div class="content-box clearfix">
+
+  {{ content }}
+
+</div>
 
 
 <style>
