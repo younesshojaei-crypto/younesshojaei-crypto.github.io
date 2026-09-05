@@ -302,6 +302,12 @@ html[data-theme="dark"] .contact ul li a {
   min-height: 0;
   max-height: none !important;
   overflow-y: auto;
+
+  /* موضوعات بالا بمونه، ارتباط با من/شبکه‌های اجتماعی به سمت
+     پایینِ ستون هدایت بشه، نه بلافاصله زیر لیست موضوعات */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 768px) {
@@ -315,6 +321,23 @@ html[data-theme="dark"] .contact ul li a {
 
   .sidebar-fixed .sidebar-bottom {
     overflow-y: visible !important;
+  }
+
+  /* ترتیب نمایش: اول مطلب‌ها، بعد بیو/موضوعات/ارتباط با من.
+     .wrapper پدرِ مشترکِ .sidebar-fixed و .content-box هست؛
+     با flex + order جای نمایش‌شون رو (بدون تغییر ترتیب در HTML)
+     عوض می‌کنیم. */
+  .wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .content-box {
+    order: 1 !important;
+  }
+
+  .sidebar-fixed {
+    order: 2 !important;
   }
 }
 
@@ -341,12 +364,21 @@ body {
   max-width: calc(100vw - 24px);
 }
 
+/* دسکتاپ: سایدبار ۲۶۰px سمت راست ثابته، پس مرکز واقعیِ محتوا
+   نصفِ عرض صفحه نیست، ۱۳۰px (نصفِ عرض سایدبار) به چپ کشیده شده.
+   بدون این تنظیم، نوار شناور نسبت به پست‌ها وسط‌چین به نظر نمی‌رسید. */
+@media (min-width: 769px) {
+  .noys-floatnav {
+    left: calc(50% - 130px);
+  }
+}
+
 .noys-floatnav-inner {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 
-  padding: 8px 10px;
+  padding: 10px 12px;
 
   background: #ffffff;
   border-radius: 999px;
@@ -367,8 +399,8 @@ body {
   align-items: center;
   justify-content: center;
 
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   flex-shrink: 0;
 
   border-radius: 50%;
@@ -376,7 +408,7 @@ body {
   background: #fafafa;
   cursor: pointer;
 
-  font-size: 14px;
+  font-size: 16px;
   color: #444;
 
   transition: all 0.2s ease;
@@ -396,10 +428,10 @@ body {
 }
 
 .noys-nav-links a {
-  padding: 8px 18px;
+  padding: 10px 20px;
   border-radius: 999px;
 
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   text-decoration: none;
   color: #444;

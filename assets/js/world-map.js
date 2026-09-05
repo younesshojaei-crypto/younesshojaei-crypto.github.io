@@ -17,7 +17,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var countryData = {};
   try {
-    countryData = JSON.parse(dataScript.textContent) || {};
+    var parsed = JSON.parse(dataScript.textContent) || [];
+
+    /* داده‌ها ممکنه به‌صورت آرایه‌ای از رکوردها بیاد (هر کدوم با
+       فیلد code)، یا مستقیم یک آبجکت کلیدشده با کد کشور باشه.
+       این‌جا هر دو حالت رو پشتیبانی می‌کنیم و در نهایت یک آبجکت
+       می‌سازیم که با کد کشور (مثلاً "IQ") قابل دسترسیه. */
+    if (Array.isArray(parsed)) {
+      parsed.forEach(function (entry) {
+        if (entry && entry.code) {
+          countryData[entry.code] = entry;
+        }
+      });
+    } else {
+      countryData = parsed;
+    }
   } catch (e) {
     countryData = {};
   }
