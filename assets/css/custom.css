@@ -144,7 +144,8 @@
 
 .donate-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 26px rgba(255, 84, 112, 0.5);
+  /* ترکیبی از رنگ خودش و زرد برند، تا هم شاخص بمونه هم با بقیه هماهنگ باشه */
+  box-shadow: 0 12px 28px rgba(255, 168, 61, 0.55);
 }
 
 html[data-theme="dark"] .contact ul li a {
@@ -199,7 +200,8 @@ html[data-theme="dark"] .contact ul li a {
 
 .sidebar-topics:hover {
   transform: scale(1.02);
-  box-shadow: 0 14px 32px rgba(20, 22, 30, 0.14);
+  /* دقیقاً مثل سایه‌ی لوگو: موقع هاور به رنگ زرد برند تغییر می‌کنه */
+  box-shadow: 0 16px 34px rgba(255, 242, 0, 0.45);
 }
 
 .sidebar-topics h3 {
@@ -339,6 +341,54 @@ html[data-theme="dark"] .contact ul li a {
   .sidebar-fixed {
     order: 2 !important;
   }
+
+  /* نقشه (که حالا یک بلاک مستقله، نه بخشی از content-box) باید
+     زیرِ سایدبار (موضوعات + ارتباط با من) بیاد، نه بالای اون‌ها */
+  .noys-world-section {
+    order: 3 !important;
+  }
+}
+
+/* =========================================================
+   NOYS - نقشه به‌عنوان بلاک مستقل (خارج از content-box)
+   قبلاً نقشه بخشی از content-box بود؛ حالا برای این‌که بشه توی
+   موبایل زیرِ سایدبار قرارش داد، به یک هم‌سطحِ content-box و
+   sidebar-fixed تبدیل شده. برای این‌که توی دسکتاپ دقیقاً هم‌تراز
+   با مطلب‌ها بمونه (نه زیر سایدبار قایم بشه)، همون تورفتگیِ
+   content-box رو به‌اش می‌دیم.
+   ========================================================= */
+
+.noys-world-section {
+  width: calc(100% - 260px) !important;
+  margin-right: 260px !important;
+  margin-left: 0 !important;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+  .noys-world-section {
+    width: 100% !important;
+    margin-right: 0 !important;
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+}
+
+/* =========================================================
+   NOYS - صفحه‌ی پادکست: خلوت، فقط باکس‌های اپیزود
+   بیو/موضوعات/ارتباط با من این‌جا نمایش داده نمی‌شن، صفحه هم
+   تمام‌عرض می‌شه (هم دسکتاپ، هم موبایل/تبلت)
+   ========================================================= */
+
+.page-podcast .sidebar-fixed {
+  display: none !important;
+}
+
+.page-podcast .content-box {
+  width: 100% !important;
+  margin-right: 0 !important;
 }
 
 

@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 {% include head.html %}
 
-<body>
+<body class="{% if page.url == '/podcast/' %}page-podcast{% endif %}">
 
   <script>window.NOYS_BASEURL = "{{ site.baseurl }}";</script>
 
