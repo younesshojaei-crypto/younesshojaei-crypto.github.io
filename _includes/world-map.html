@@ -40,26 +40,36 @@
     </div>
   </div>
 
+  {% comment %} 
+    ساخت دیتای JSON به صورت امن
+    در اینجا متغیرها را داخل یک آرایه (Array) می‌سازیم و در آخر jsonify می‌کنیم
+  {% endcomment %}
+  {% assign noys_country_posts = site.posts | where_exp: "p", "p.country != nil" %}
+  {% assign noys_country_posts = noys_country_posts | where_exp: "p", "p.country != empty" %}
+  {% assign noys_country_groups = noys_country_posts | group_by: "country" %}
+  
+  {% capture noys_json_data %}
+  [
+    {% for group in noys_country_groups %}
+      {
+        "code": "{{ group.name | upcase }}",
+        "name": {{ group.items.first.country_name | default: group.name | jsonify }},
+        "items": [
+          {% for post in group.items %}
+            {
+              "title": {{ post.title | jsonify }},
+              "url": {{ post.url | relative_url | jsonify }},
+              "img": {{ post.img | prepend: '/assets/img/' | relative_url | jsonify }}
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  {% endcapture %}
+
   <script type="application/json" id="noysCountryData">
-    {% assign noys_country_posts = site.posts | where_exp: "p", "p.country != nil and p.country != empty" %}
-    {% assign noys_country_groups = noys_country_posts | group_by: "country" %}
-    {
-      {% for group in noys_country_groups %}
-        {% unless forloop.first %},{% endunless %}
-        "{{ group.name | upcase }}": {
-          "name": {{ group.items.first.country_name | default: group.name | jsonify }},
-          "items": [
-            {% for post in group.items %}
-              {
-                "title": {{ post.title | jsonify }},
-                "url": {{ post.url | relative_url | jsonify }},
-                "img": {{ post.img | prepend: '/assets/img/' | relative_url | jsonify }}
-              }{% unless forloop.last %},{% endunless %}
-            {% endfor %}
-          ]
-        }
-      {% endfor %}
-    }
+    {{ noys_json_data | strip_newlines }}
   </script>
 
 </section>
