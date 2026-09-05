@@ -44,7 +44,8 @@
     ساخت دیتای JSON به صورت امن
     در اینجا متغیرها را داخل یک آرایه (Array) می‌سازیم و در آخر jsonify می‌کنیم
   {% endcomment %}
-  {% assign noys_country_posts = site.posts | where_exp: "p", "p.country != nil and p.country != empty" %}
+  {% assign noys_country_posts = site.posts | where_exp: "p", "p.country != nil" %}
+  {% assign noys_country_posts = noys_country_posts | where_exp: "p", "p.country != empty" %}
   {% assign noys_country_groups = noys_country_posts | group_by: "country" %}
   
   {% capture noys_json_data %}
